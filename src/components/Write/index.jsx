@@ -1,11 +1,32 @@
 import React, { useState } from 'react';
-import { WriteContainer, EditorSection, PreviewSection, MarkdownEditor, PreviewContent } from './style';
+import { PageContainer, WriteContainer, EditorSection, PreviewSection, MarkdownEditor, PreviewContent, TitleInput, ButtonContainer, LeftButton, FeedbackButton, TempSaveButton, PublishButton } from './style';
 
 const WritePage = () => {
+  const [title, setTitle] = useState('');
   const [markdownContent, setMarkdownContent] = useState('');
+
+  const handleTitleChange = (e) => {
+    setTitle(e.target.value);
+  };
 
   const handleEditorChange = (e) => {
     setMarkdownContent(e.target.value);
+  };
+
+  const handleExit = () => {
+    alert('나가기 버튼을 눌렀습니다.');
+  };
+
+  const handleFeedback = () => {
+    alert('피드백 버튼을 눌렀습니다.');
+  };
+
+  const handleTempSave = () => {
+    alert('임시 저장 버튼을 눌렀습니다.');
+  };
+
+  const handlePublish = () => {
+    alert('출간 버튼을 눌렀습니다.');
   };
 
   const parseMarkdown = (markdown) => {
@@ -25,18 +46,34 @@ const WritePage = () => {
   };
 
   return (
-    <WriteContainer>
-      <EditorSection>
-        <MarkdownEditor
-          value={markdownContent}
-          onChange={handleEditorChange}
-          placeholder="내용 작성..."
-        />
-      </EditorSection>
-      <PreviewSection>
-        <PreviewContent dangerouslySetInnerHTML={{ __html: parseMarkdown(markdownContent) }} />
-      </PreviewSection>
-    </WriteContainer>
+    <PageContainer>
+      <WriteContainer>
+        <EditorSection>
+          <TitleInput
+            value={title}
+            onChange={handleTitleChange}
+            placeholder="제목을 입력하세요..."
+          />
+          <MarkdownEditor
+            value={markdownContent}
+            onChange={handleEditorChange}
+            placeholder="내용 작성..."
+          />
+          <ButtonContainer>
+            <LeftButton onClick={handleExit}>나가기</LeftButton>
+            <div>
+              <FeedbackButton onClick={handleFeedback}>피드백</FeedbackButton>
+              <TempSaveButton onClick={handleTempSave}>임시 저장</TempSaveButton>
+              <PublishButton onClick={handlePublish}>출간</PublishButton>
+            </div>
+          </ButtonContainer>
+        </EditorSection>
+        <PreviewSection>
+          <h1>{title}</h1>
+          <PreviewContent dangerouslySetInnerHTML={{ __html: parseMarkdown(markdownContent) }} />
+        </PreviewSection>
+      </WriteContainer>
+    </PageContainer>
   );
 };
 

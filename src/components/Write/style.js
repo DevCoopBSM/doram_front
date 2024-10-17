@@ -1,36 +1,66 @@
 import styled from 'styled-components';
 
+export const PageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #f5f5f5;
+`;
+
 export const WriteContainer = styled.div`
   display: flex;
-  height: calc(100vh - 60px);
+  width: 80%;
+  height: 80vh;
+  background-color: white;  
+  overflow: hidden;
 `;
 
 export const EditorSection = styled.div`
   flex: 1;
   padding: 20px;
-  border-right: 1px solid #ccc;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
+  overflow-y: auto;
 `;
 
 export const PreviewSection = styled.div`
   flex: 1;
+  height: 100%;
   padding: 20px;
   overflow-y: auto;
+  
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 `;
 
 export const MarkdownEditor = styled.textarea`
   width: 90%;
-  height: 90%;
-  min-width: 50vw;
+  height: calc(100% - 70px);
+  min-width: 100%;
   border: none;
   resize: none;
   font-family: 'Courier New', Courier, monospace;
   font-size: 16px;
   line-height: 1.5;
   padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   &:focus {
     outline: none;
@@ -39,11 +69,11 @@ export const MarkdownEditor = styled.textarea`
 
 export const PreviewContent = styled.div`
   font-family: Arial, sans-serif;
-  line-height: 1.6;
+  line-height: 1.3;
 
   h1, h2, h3, h4, h5, h6 {
-    margin-top: 1em;
-    margin-bottom: 0.5em;
+    margin-top: 0.3em;
+    margin-bottom: -0.1em;
   }
 
   p {
@@ -62,5 +92,82 @@ export const PreviewContent = styled.div`
     &:hover {
       text-decoration: underline;
     }
+  }
+`;
+
+export const TitleInput = styled.input`
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 24px;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  &:focus {
+    outline: none;
+    border-bottom-color: #0066cc;
+  }
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin-top: 20px;
+`;
+
+export const LeftButton = styled.button`
+  padding: 10px 20px;
+  background-color: white;
+  color: #616161;
+  font-weight: 500;
+  font-size: 16px;
+  border: 2px solid #CCC;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  &:hover {
+    background-color: #f0f0f0;
+  }
+`;
+
+export const RightButton = styled.button`
+  padding: 10px 20px;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  margin-left: 10px;
+  cursor: pointer;
+  font-weight: bold;
+`;
+
+export const FeedbackButton = styled(RightButton)`
+  background: var(--Primary, #8EE559);
+  color: #FFF;
+  font-size: 16px;
+  font-weight: 500;
+  &:hover {
+    background-color: #7cd94e;
+  }
+`;
+
+export const TempSaveButton = styled(RightButton)`
+  background-color: white;
+  color: #000;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 10px 10px;
+  border: 2px solid var(--Primary, #8EE559);
+  &:hover {
+    background-color: #f0fff0;
+  }
+`;
+
+export const PublishButton = styled(RightButton)`
+  color: #FFF;
+  font-size: 16px;
+  font-weight: 500;
+  background: var(--Primary, #8EE559);
+  &:hover {
+    background-color: #7cd94e;
   }
 `;
