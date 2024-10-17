@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PageContainer, WriteContainer, EditorSection, PreviewSection, MarkdownEditor, PreviewContent, TitleInput, ButtonContainer, LeftButton, FeedbackButton, TempSaveButton, PublishButton } from './style';
+import { PageContainer, WriteContainer, EditorSection, PreviewSection, MarkdownEditor, PreviewContent, PreviewTitle, TitleInput, ButtonContainer, LeftButton, FeedbackButton, TempSaveButton, PublishButton } from './style';
 
 const WritePage = () => {
   const [title, setTitle] = useState('');
@@ -69,7 +69,7 @@ const WritePage = () => {
           </ButtonContainer>
         </EditorSection>
         <PreviewSection>
-          <h1>{title}</h1>
+          {title && <PreviewTitle>{title}</PreviewTitle>}
           <PreviewContent dangerouslySetInnerHTML={{ __html: parseMarkdown(markdownContent) }} />
         </PreviewSection>
       </WriteContainer>

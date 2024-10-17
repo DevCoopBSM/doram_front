@@ -11,7 +11,7 @@ export const PageContainer = styled.div`
 
 export const WriteContainer = styled.div`
   display: flex;
-  width: 80%;
+  width: 90%;
   height: 80vh;
   background-color: white;  
   overflow: hidden;
@@ -67,13 +67,24 @@ export const MarkdownEditor = styled.textarea`
   }
 `;
 
+export const PreviewTitle = styled.h1`
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+`;
+
 export const PreviewContent = styled.div`
   font-family: Arial, sans-serif;
-  line-height: 1.3;
+  line-height: 1.6;
 
   h1, h2, h3, h4, h5, h6 {
     margin-top: 0.3em;
-    margin-bottom: -0.1em;
+    margin-bottom: -0.3em;
+  }
+
+  h1 {
+    font-size: 2em;
   }
 
   p {
