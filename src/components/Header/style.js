@@ -94,3 +94,15 @@ export const DropdownItem = styled.div`
     background-color: #f0f0f0;
   }
 `;
+
+export const AlarmButton = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+
+  img {
+    width: 24px;
+    height: 24px;
+  }
+`;
