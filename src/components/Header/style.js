@@ -11,6 +11,9 @@ export const HeaderContainer = styled.header`
 export const Logo = styled.img`
   width: 120px;
   height: auto;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const SearchBar = styled.input`
@@ -46,15 +49,48 @@ export const WriteButton = styled.button`
 export const UserProfile = styled.div`
   display: flex;
   align-items: center;
+  position: relative;  /* Positioning context for the dropdown */
   
   img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     margin-right: 10px;
+    cursor: pointer;
   }
 
   span {
     font-weight: bold;
+    cursor: pointer;
+  }
+`;
+
+export const DropdownMenu = styled.div`
+  position: absolute;
+  top: 50px;  /* Adjust based on the UserProfile height */
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 10px;
+  align-self: stretch;
+  border: 1px solid #CCC;
+  background: #FFF;
+  color: var(--Black, #000);
+  font-family: "NanumSquare Neo OTF";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+`;
+
+export const DropdownItem = styled.div`
+  padding: 8px 12px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f0f0f0;
   }
 `;

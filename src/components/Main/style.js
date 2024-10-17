@@ -10,16 +10,17 @@ export const Banner = styled.div`
   display: flex;
   width: 100%;
   height: 180px;
-  padding: 51.5px 380.5px;
   justify-content: center;
   align-items: center;
-  background-color: #f5f5f5;
+  background-color: #8EE559;
   margin-bottom: 20px;
+  text-align: center;
 `;
 
 export const SectionTitle = styled.h2`
   text-align: left;
   margin-bottom: 10px;
+  margin-top: 50px;
 `;
 
 export const CategorySection = styled.div`
@@ -38,7 +39,7 @@ export const CategorySection = styled.div`
 `;
 
 export const CategoryButton = styled.button`
-  padding: 8px 24px;
+  padding: 4px 24px;
   background-color: #fff;
   cursor: pointer;
   border-radius: 8px;
@@ -46,7 +47,7 @@ export const CategoryButton = styled.button`
   color: #000;
   font-size: 16px;
   width: auto;
-  height: 10%;
+  height: 6%;
   font-weight: 400;
 
   &:hover {
@@ -58,6 +59,7 @@ export const BookSection = styled.div`
   display: flex;
   gap: 20px;
   margin-top: 20px;
+  justify-content: space-around;
 `;
 
 export const BookCard = styled.div`
@@ -65,15 +67,24 @@ export const BookCard = styled.div`
   flex-direction: column;
   align-items: center;
   width: 150px;
-  
-  img {
-    width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-  }
+`;
+
+export const BookCover = styled.img`
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+`;
+
+export const BookInfo = styled.div`
+  text-align: left;
 `;
 
 export const BookTitle = styled.span`
   font-size: 14px;
-  text-align: center;
+  font-weight: bold;
+`;
+
+export const BookAuthor = styled.span`
+  font-size: 12px;
+  color: #555;
 `;
