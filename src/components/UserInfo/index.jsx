@@ -32,7 +32,7 @@ const UserInfo = () => {
           </FollowerFollowingCount>
           <FollowerFollowingCount>
             <span>팔로잉</span>
-            <span>458</span>
+            <span>430</span>
           </FollowerFollowingCount>
         </FollowerFollowingSection>
       </UserSection>
