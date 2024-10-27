@@ -26,7 +26,7 @@ export const UserSection = styled.div`
   display: flex;
   align-items: flex-start;
   width: 100%;
-  margin-top: 50px;
+  margin-top: 70px;
 `;
 
 export const UserLogo = styled.img`
@@ -122,3 +122,37 @@ export const WriteCategory = styled.button`
 
 export const LikeCategory = styled(WriteCategory)``;
 export const SaveCategory = styled(WriteCategory)``;
+
+export const ListSection = styled.div`
+  margin-top: 130px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
+export const List = styled.div`
+  width: 100%;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const BookName = styled.div`
+  font-size: 24;
+  color: black;
+`;
+export const Reaction = styled.div`
+  display: flex;
+  gap: 20px;
+  font-size: 18;
+  color: #cccccc;
+`;
+
+export const Like = styled.div``;
+export const Chat = styled.div``;
+
+export const Plus = styled.img`
+  padding-left: 20px;
+  padding-right: 20px;
+`;

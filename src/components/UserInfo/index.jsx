@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import * as S from "./style";
 import UserHeader from "../Header";
 import userImage from "../../assets/userImage.svg";
+import plus from "../../assets/plus.svg";
 
 const UserInfo = () => {
   const [activeCategory, setActiveCategory] = useState("write");
@@ -9,6 +10,29 @@ const UserInfo = () => {
   const handleCategoryClick = (category) => {
     setActiveCategory(category);
   };
+
+  const WriteBooks = [
+    { bookname: "너를 사랑하던 어느 날에", like: 108, chat: 3 },
+    { bookname: "고양이 뒤를 따라가", like: 72, chat: 12 },
+    { bookname: "너의 편두통", like: 1, chat: 0 },
+  ];
+  const LikeBooks = [
+    { bookname: "우리가 빛의 속도로 갈 수 없다면", like: 203, chat: 12 },
+    { bookname: "데미안", like: 324, chat: 83 },
+    { bookname: "오늘의 날씨", like: 123, chat: 32 },
+  ];
+  const SaveBooks = [
+    { bookname: "제인에어", like: 982, chat: 143 },
+    { bookname: "사라진 모든 것들에게", like: 93, chat: 38 },
+    { bookname: "밤편지", like: 599, chat: 93 },
+  ];
+
+  const books =
+    activeCategory === "write"
+      ? WriteBooks
+      : activeCategory === "like"
+      ? LikeBooks
+      : SaveBooks;
 
   return (
     <S.LayoutContainer>
@@ -34,6 +58,7 @@ const UserInfo = () => {
             </S.FollowerFollowingCount>
           </S.FollowerFollowingSection>
         </S.UserSection>
+
         <S.WriteSection>
           <S.Category>
             <S.WriteCategory
@@ -56,6 +81,19 @@ const UserInfo = () => {
             </S.SaveCategory>
           </S.Category>
         </S.WriteSection>
+
+        <S.ListSection>
+          {books.map((list, index) => (
+            <S.List key={index}>
+              <S.BookName>{list.bookname}</S.BookName>
+              <S.Reaction>
+                <S.Like>좋아요 {list.like}</S.Like>
+                <S.Chat> 댓글 {list.chat}</S.Chat>
+                <S.Plus src={plus} alt="plus" />
+              </S.Reaction>
+            </S.List>
+          ))}
+        </S.ListSection>
       </S.ContentContainer>
     </S.LayoutContainer>
   );
