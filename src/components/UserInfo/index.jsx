@@ -1,41 +1,32 @@
 import React from "react";
 import Layout from "../Layout/index";
-import {
-  UserSection,
-  UserLogo,
-  UserDetails,
-  UserName,
-  UserEmail,
-  UserBio,
-  EditButton,
-  FollowerFollowingSection,
-  FollowerFollowingCount,
-} from "./style";
+import * as S from "./style";
 import userImage from "../../assets/userImage.svg";
 
 const UserInfo = () => {
   return (
     <Layout>
-      <UserSection>
-        <UserLogo src={userImage} alt="User Logo" />
-        <UserDetails>
-          <UserName>
-            UserName <UserEmail>user@example.com</UserEmail>{" "}
-          </UserName>
-          <UserBio>유저 소개 텍스트를 여기에 표시합니다.</UserBio>
-        </UserDetails>
-        <EditButton>프로필 수정</EditButton>
-        <FollowerFollowingSection>
-          <FollowerFollowingCount>
+      <S.UserSection>
+        <S.UserLogo src={userImage} alt="User Logo" />
+        <S.UserDetails>
+          <S.UserName>
+            UserName <S.UserEmail>user@example.com</S.UserEmail>
+          </S.UserName>
+          <S.UserBio>유저 소개 텍스트를 여기에 표시합니다.</S.UserBio>
+        </S.UserDetails>
+        <S.EditButton>프로필 수정</S.EditButton>
+        <S.FollowerFollowingSection>
+          <S.FollowerFollowingCount>
             <span>팔로워</span>
             <span>123</span>
-          </FollowerFollowingCount>
-          <FollowerFollowingCount>
+          </S.FollowerFollowingCount>
+          <S.FollowerFollowingCount>
             <span>팔로잉</span>
             <span>430</span>
-          </FollowerFollowingCount>
-        </FollowerFollowingSection>
-      </UserSection>
+          </S.FollowerFollowingCount>
+        </S.FollowerFollowingSection>
+      </S.UserSection>
+      <S.Write></S.Write>
     </Layout>
   );
 };

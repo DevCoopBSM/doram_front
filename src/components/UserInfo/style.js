@@ -88,3 +88,5 @@ export const FollowerFollowingCount = styled.div`
     color: #333;
   }
 `;
+
+export const Write = styled.div``;
