@@ -107,28 +107,18 @@ export const WriteSection = styled.div`
 export const Category = styled.div`
   position: absolute;
   display: flex;
+  gap: 45px;
 `;
 export const WriteCategory = styled.button`
   position: relative;
-  width: 354px;
+  width: 341px;
   height: 46px;
-  background-color: #8ee559;
-  border-radius: 0;
+  background-color: ${(props) => (props.isActive ? "#8ee559" : "transparent")};
+  color: ${(props) => (props.isActive ? "#fff" : "#000")};
   border-radius: 8px 8px 0 0;
+  cursor: pointer;
+  border: none;
 `;
-export const LikeCategory = styled.button`
-  position: relative;
-  width: 354px;
-  height: 46px;
-  background-color: #8ee559;
-  border-radius: 0;
-  border-radius: 8px 8px 0 0;
-`;
-export const SaveCategory = styled.button`
-  position: relative;
-  width: 354px;
-  height: 46px;
-  background-color: #8ee559;
-  border-radius: 0;
-  border-radius: 8px 8px 0 0;
-`;
+
+export const LikeCategory = styled(WriteCategory)``;
+export const SaveCategory = styled(WriteCategory)``;

@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import * as S from "./style";
 import UserHeader from "../Header";
 import userImage from "../../assets/userImage.svg";
 
 const UserInfo = () => {
+  const [activeCategory, setActiveCategory] = useState("write");
+
+  const handleCategoryClick = (category) => {
+    setActiveCategory(category);
+  };
+
   return (
     <S.LayoutContainer>
       <UserHeader />
@@ -30,9 +36,24 @@ const UserInfo = () => {
         </S.UserSection>
         <S.WriteSection>
           <S.Category>
-            <S.WriteCategory>내가 쓴 글</S.WriteCategory>
-            <S.LikeCategory>내가 좋아한 글</S.LikeCategory>
-            <S.SaveCategory>저장된 글</S.SaveCategory>
+            <S.WriteCategory
+              isActive={activeCategory === "write"}
+              onClick={() => handleCategoryClick("write")}
+            >
+              내가 쓴 글
+            </S.WriteCategory>
+            <S.LikeCategory
+              isActive={activeCategory === "like"}
+              onClick={() => handleCategoryClick("like")}
+            >
+              내가 좋아한 글
+            </S.LikeCategory>
+            <S.SaveCategory
+              isActive={activeCategory === "save"}
+              onClick={() => handleCategoryClick("save")}
+            >
+              저장된 글
+            </S.SaveCategory>
           </S.Category>
         </S.WriteSection>
       </S.ContentContainer>
