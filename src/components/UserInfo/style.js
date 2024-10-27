@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
@@ -14,7 +14,7 @@ export const UserSection = styled.div`
   display: flex;
   align-items: flex-start;
   width: 100%;
-  margin-bottom: 20px;
+  margin-top: 50px;
 `;
 
 export const UserLogo = styled.img`
@@ -52,8 +52,8 @@ export const UserBio = styled.p`
 
 export const EditButton = styled.button`
   border-radius: 8px;
-  background: var(--Primary, #8EE559);
-  color: #FFF;
+  background: var(--Primary, #8ee559);
+  color: #fff;
   font-size: 16px;
   font-weight: 700;
   padding: 10px 20px;
