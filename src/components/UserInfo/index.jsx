@@ -42,11 +42,13 @@ const UserInfo = () => {
           <S.UserLogo src={userImage} alt="User Logo" />
           <S.UserDetails>
             <S.UserName>
-              UserName <S.UserEmail>user@example.com</S.UserEmail>
+              <S.Name> UserName</S.Name>
+              <S.UserEmail>user@example.com</S.UserEmail>
+              <S.EditButton>프로필 수정</S.EditButton>
             </S.UserName>
             <S.UserBio>유저 소개 텍스트를 여기에 표시합니다.</S.UserBio>
           </S.UserDetails>
-          <S.EditButton>프로필 수정</S.EditButton>
+
           <S.FollowerFollowingSection>
             <S.FollowerFollowingCount>
               <span>팔로워</span>

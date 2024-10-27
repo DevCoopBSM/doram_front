@@ -44,16 +44,22 @@ export const UserDetails = styled.div`
 `;
 
 export const UserName = styled.h2`
-  font-size: 24px;
-  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   margin: 0;
   margin-bottom: 8px;
+  gap: 15px;
 `;
 
-export const UserEmail = styled.span`
-  font-size: 16px;
+export const Name = styled.div`
+  font-size: 36px;
+  font-weight: bold;
+`;
+
+export const UserEmail = styled.div`
+  font-size: 24px;
   color: #666;
-  margin-right: 20px;
 `;
 
 export const UserBio = styled.p`
@@ -63,15 +69,16 @@ export const UserBio = styled.p`
 `;
 
 export const EditButton = styled.button`
+  width: 128px;
+  height: 46px;
+  padding: 10px 24px;
   border-radius: 8px;
   background: var(--Primary, #8ee559);
   color: #fff;
   font-size: 16px;
-  font-weight: 700;
-  padding: 10px 20px;
   cursor: pointer;
   border: none;
-  width: 450px;
+  white-space: nowrap;
 `;
 
 export const FollowerFollowingSection = styled.div`
@@ -87,7 +94,7 @@ export const FollowerFollowingCount = styled.div`
   flex-direction: column;
   align-items: center;
   width: 300px;
-  margin-left: 100px;
+  margin-left: 0px;
   span:first-child {
     font-size: 16px;
     font-weight: bold;
