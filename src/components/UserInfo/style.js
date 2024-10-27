@@ -1,12 +1,24 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const LayoutContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 20px;
   align-items: center;
   width: 1152px;
   padding: 20px;
+  margin: 0 auto;
+`;
+
+export const ContentContainer = styled.div`
+  width: 100%;
+  box-sizing: border-box;
+`;
+
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 1152px;
   margin: 0 auto;
 `;
 
@@ -89,4 +101,34 @@ export const FollowerFollowingCount = styled.div`
   }
 `;
 
-export const Write = styled.div``;
+export const WriteSection = styled.div`
+  margin-top: 50px;
+`;
+export const Category = styled.div`
+  position: absolute;
+  display: flex;
+`;
+export const WriteCategory = styled.button`
+  position: relative;
+  width: 354px;
+  height: 46px;
+  background-color: #8ee559;
+  border-radius: 0;
+  border-radius: 8px 8px 0 0;
+`;
+export const LikeCategory = styled.button`
+  position: relative;
+  width: 354px;
+  height: 46px;
+  background-color: #8ee559;
+  border-radius: 0;
+  border-radius: 8px 8px 0 0;
+`;
+export const SaveCategory = styled.button`
+  position: relative;
+  width: 354px;
+  height: 46px;
+  background-color: #8ee559;
+  border-radius: 0;
+  border-radius: 8px 8px 0 0;
+`;
