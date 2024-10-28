@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import * as S from "./style";
 import UserHeader from "../Header";
 import userImage from "../../assets/userImage.svg";
@@ -9,6 +10,11 @@ const UserInfo = () => {
 
   const handleCategoryClick = (category) => {
     setActiveCategory(category);
+  };
+  const navigate = useNavigate();
+
+  const goToModify = () => {
+    navigate("/modify");
   };
 
   const WriteBooks = [
@@ -44,11 +50,10 @@ const UserInfo = () => {
             <S.UserName>
               <S.Name> UserName</S.Name>
               <S.UserEmail>user@example.com</S.UserEmail>
-              <S.EditButton>프로필 수정</S.EditButton>
+              <S.EditButton onClick={goToModify}>프로필 수정</S.EditButton>
             </S.UserName>
             <S.UserBio>유저 소개 텍스트를 여기에 표시합니다.</S.UserBio>
           </S.UserDetails>
-
           <S.FollowerFollowingSection>
             <S.FollowerFollowingCount>
               <span>팔로워</span>

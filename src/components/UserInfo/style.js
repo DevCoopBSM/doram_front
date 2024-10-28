@@ -22,6 +22,14 @@ export const Container = styled.div`
   margin: 0 auto;
 `;
 
+export const Title = styled.div`
+  color: "black";
+  font-size: 32px;
+  font-weight: 800;
+  margin-left: 20px;
+  white-space: nowrap;
+`;
+
 export const UserSection = styled.div`
   display: flex;
   align-items: flex-start;
