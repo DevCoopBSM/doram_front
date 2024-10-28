@@ -7,6 +7,8 @@ import Save from "./components/SaveList/index";
 import Write from "./components/Write/index";
 import Detail from "./components/Detail/index";
 import Modify from "./components/Modify/index";
+import SaveWrite from "./components/SaveWrite/index";
+import Login from "./components/Login/index";
 import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
           <Route path="/write" element={<Write />} />
           <Route path="/detail" element={<Detail />} />
           <Route path="/modify" element={<Modify />} />
+          <Route path="/savewrite" element={<SaveWrite />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/*" element={<NotFoundPage />} />
         </Routes>
       </div>
