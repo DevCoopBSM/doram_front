@@ -154,7 +154,7 @@ export const List = styled.div`
 `;
 
 export const BookName = styled.div`
-  font-size: 24;
+  font-size: 24px;
   color: black;
 `;
 export const Reaction = styled.div`
