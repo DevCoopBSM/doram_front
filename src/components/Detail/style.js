@@ -24,6 +24,7 @@ export const Contain = styled.div`
 export const SelectSection = styled.div`
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
 `;
 
 export const Title = styled.div`
@@ -70,7 +71,7 @@ export const ImgSection = styled.div`
 
 export const Img = styled.div`
   position: relative;
-  bottom: 160px;
+  bottom: 42px;
   left: 20px;
   width: 200px;
   height: 280px;
@@ -78,7 +79,8 @@ export const Img = styled.div`
 `;
 
 export const UploadBtn = styled.button`
-  margin-top: 75px;
+  position: relative;
+  top: 192px;
   width: 174px;
   height: 46px;
   padding: 10px 24px;
