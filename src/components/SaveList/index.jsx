@@ -7,7 +7,7 @@ const SaveList = () => {
     <PageContainer>
       <UserHeader />
       <SaveListContainer>
-        {/* 임시 저장 목록의 나머지 내용 */}
+        
       </SaveListContainer>
     </PageContainer>
   );

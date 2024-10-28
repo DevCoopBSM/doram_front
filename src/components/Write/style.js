@@ -6,7 +6,7 @@ export const PageContainer = styled.div`
   align-items: center;
   min-height: 100vh;
   width: 100%;
-  background-color: #f5f5f5;
+  background-color: #fff;
 `;
 
 export const WriteContainer = styled.div`
@@ -111,11 +111,10 @@ export const TitleInput = styled.input`
   padding: 10px;
   margin-bottom: 20px;
   font-size: 24px;
+  font-weight: bold;
   border: none;
-  border-bottom: 2px solid #ccc;
   &:focus {
     outline: none;
-    border-bottom-color: #0066cc;
   }
 `;
 
@@ -180,5 +179,100 @@ export const PublishButton = styled(RightButton)`
   background: var(--Primary, #8EE559);
   &:hover {
     background-color: #7cd94e;
+  }
+`;
+
+export const KeywordContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  width: 90%;
+  margin-top: 10px;
+`;
+
+export const KeywordTag = styled.span`
+  border-radius: 8px;
+  border: 2px solid #0EB400;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+`;
+
+export const RemoveButton = styled.button`
+  background: none;
+  border: none;
+  color: #868e96;
+  cursor: pointer;
+  font-size: 16px;
+  width: 5vh;
+  height: 20px;
+  
+  &:hover {
+    color: #495057;
+  }
+`;
+
+export const AddKeywordButton = styled.button`
+  background: none;
+  border: none;
+  color: #868e96;
+  cursor: pointer;
+  font-size: 14px;
+  height: 25px;
+  margin-right: 15px;
+  
+  &:hover {
+    color: #495057;
+  }
+`;
+
+export const KeywordInput = styled.input`
+  border: none;
+  outline: none;
+  font-size: 14px;
+  padding: 4px 12px;
+  border-radius: 16px;
+  background-color: none;
+  width: 30vh;
+  height: 35px;
+  margin-right: 10px;
+  
+  &::placeholder {
+    color: #868e96;
+  }
+`;
+
+export const ToolbarContainer = styled.div`
+  display: flex;
+  gap: 12px;
+  padding: 8px 0;
+  margin-bottom: 16px;
+  width: 90%;
+  align-items: center;
+`;
+
+export const ToolbarButton = styled.button`
+  margin-top: 10px;
+  width: 5vh;
+  height: 30px;
+  padding: 4px 8px;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #495057;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    background: #f1f3f5;
+  }
+
+  &:active {
+    background: #e9ecef;
   }
 `;
