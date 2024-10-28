@@ -4,7 +4,6 @@ import UserHeader from "../Header";
 
 const Detail = () => {
   const [publicStatus, setPublicStatus] = useState(null);
-  const [publishStatus, setPublishStatus] = useState(null);
 
   return (
     <S.LayoutContainer>
@@ -36,31 +35,6 @@ const Detail = () => {
                     }}
                   >
                     비공개
-                  </S.Btn>
-                </S.BtnContainer>
-              </S.Detail>
-              <S.Detail>
-                출판 희망 유무
-                <S.BtnContainer>
-                  <S.Btn
-                    onClick={() => setPublishStatus(true)}
-                    style={{
-                      backgroundColor:
-                        publishStatus === true ? "#8ee559" : "white",
-                      color: publishStatus === true ? "white" : "black",
-                    }}
-                  >
-                    예
-                  </S.Btn>
-                  <S.Btn
-                    onClick={() => setPublishStatus(false)}
-                    style={{
-                      backgroundColor:
-                        publishStatus === false ? "#8ee559" : "white",
-                      color: publishStatus === false ? "white" : "black",
-                    }}
-                  >
-                    아니요
                   </S.Btn>
                 </S.BtnContainer>
               </S.Detail>
