@@ -18,8 +18,8 @@ const Account = () => {
             <S.Input type="password" placeholder="비밀번호를 입력해 주세요." />
           </S.InputSection>
           <S.LoginSection>
-            <S.Text2>만약 계정이 없다면?</S.Text2>
-            <S.Login>회원가입하기</S.Login>
+            <S.Text2>만약 계정이 있다면?</S.Text2>
+            <S.Login>로그인하기</S.Login>
           </S.LoginSection>
           <S.AccountBtn>회원가입하기</S.AccountBtn>
         </S.Contain>
