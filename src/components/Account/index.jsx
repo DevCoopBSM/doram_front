@@ -1,9 +1,15 @@
-import React from "react";
+import { React, useState } from "react";
 import * as S from "./style";
 import UserHeader from "../Header";
 import logo from "../../assets/doram.png";
 
 const Account = () => {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const handleSignUpClick = () => {
+    setIsPopupOpen(true);
+    setTimeout(() => setIsPopupOpen(false), 2000);
+  };
   return (
     <S.LayoutContainer>
       <UserHeader />
@@ -21,7 +27,12 @@ const Account = () => {
             <S.Text2>만약 계정이 있다면?</S.Text2>
             <S.Login>로그인하기</S.Login>
           </S.LoginSection>
-          <S.AccountBtn>회원가입하기</S.AccountBtn>
+          <S.AccountBtn onClick={handleSignUpClick}>회원가입하기</S.AccountBtn>
+          {isPopupOpen && (
+            <S.PopupContainer>
+              <S.PopupText>안녕</S.PopupText>
+            </S.PopupContainer>
+          )}
         </S.Contain>
       </S.ContentContainer>
     </S.LayoutContainer>
