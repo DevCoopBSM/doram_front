@@ -4,7 +4,7 @@ const BASE_URL = 'https://doram.bsm-aripay.kr/api/auth/login';
 
 export const login = async (credentials) => {
   try {
-    const response = await axios.post(`${BASE_URL}/login`, credentials);
+    const response = await axios.post(`${BASE_URL}`, credentials);
     const token = response.data.Authorization;
     
     // 토큰을 로컬 스토리지에 저장

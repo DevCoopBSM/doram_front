@@ -26,7 +26,7 @@ const Login = () => {
   const handleLoginClick = async () => {
     try {
       await login(inputs);
-      navigate("/main"); // 로그인 성공 시 메인 페이지로 이동
+      navigate("/main");
     } catch (error) {
       setPopupMessage("로그인에 실패했습니다.");
       setIsPopupOpen(true);
