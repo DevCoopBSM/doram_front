@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
   display: flex;
@@ -22,9 +22,9 @@ export const SearchBar = styled.input`
   padding: 10px;
   margin: 0 20px;
   border-radius: 8px;
-  border: 4px solid #0EB400;
-  background: #FFF;
-  color: #CCC;
+  border: 4px solid #0eb400;
+  background: #fff;
+  color: black;
   font-size: 18px;
   font-weight: 700;
   padding-left: 30px;
@@ -40,8 +40,8 @@ export const WriteButton = styled.button`
   height: 45px;
   margin-right: 30px;
   border-radius: 8px;
-  background: var(--Primary, #8EE559);
-  color: #FFF;
+  background: var(--Primary, #8ee559);
+  color: #fff;
   font-size: 20px;
   font-weight: 400;
 `;
@@ -49,8 +49,8 @@ export const WriteButton = styled.button`
 export const UserProfile = styled.div`
   display: flex;
   align-items: center;
-  position: relative;  /* Positioning context for the dropdown */
-  
+  position: relative; /* Positioning context for the dropdown */
+
   img {
     width: 40px;
     height: 40px;
@@ -67,15 +67,15 @@ export const UserProfile = styled.div`
 
 export const DropdownMenu = styled.div`
   position: absolute;
-  top: 50px;  /* Adjust based on the UserProfile height */
+  top: 50px; /* Adjust based on the UserProfile height */
   right: 0;
   display: flex;
   flex-direction: column;
   padding: 10px;
   gap: 10px;
   align-self: stretch;
-  border: 1px solid #CCC;
-  background: #FFF;
+  border: 1px solid #ccc;
+  background: #fff;
   color: var(--Black, #000);
   font-family: "NanumSquare Neo OTF";
   font-size: 16px;
