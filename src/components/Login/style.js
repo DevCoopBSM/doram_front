@@ -73,6 +73,7 @@ export const Login = styled.div`
   font-size: 24px;
   font-weight: "400";
   word-wrap: "break-word";
+  cursor: pointer;
 `;
 
 export const LoginBtn = styled.button`
@@ -84,4 +85,21 @@ export const LoginBtn = styled.button`
   font-size: 32px;
   font-weight: "400";
   word-wrap: "break-word";
+`;
+
+export const PopupContainer = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 1000;
+`;
+
+export const PopupText = styled.p`
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
 `;

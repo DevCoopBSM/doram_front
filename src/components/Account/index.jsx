@@ -1,15 +1,21 @@
 import { React, useState } from "react";
 import * as S from "./style";
 import UserHeader from "../Header";
+import { useNavigate } from "react-router-dom";
 import logo from "../../assets/doram.png";
 
 const Account = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleSignUpClick = () => {
     setIsPopupOpen(true);
     setTimeout(() => setIsPopupOpen(false), 2000);
   };
+  const Togologin = () => {
+    navigate("/");
+  };
+
   return (
     <S.LayoutContainer>
       <UserHeader />
@@ -25,12 +31,12 @@ const Account = () => {
           </S.InputSection>
           <S.LoginSection>
             <S.Text2>만약 계정이 있다면?</S.Text2>
-            <S.Login>로그인하기</S.Login>
+            <S.Login onClick={Togologin}>로그인하기</S.Login>
           </S.LoginSection>
           <S.AccountBtn onClick={handleSignUpClick}>회원가입하기</S.AccountBtn>
           {isPopupOpen && (
             <S.PopupContainer>
-              <S.PopupText>안녕</S.PopupText>
+              <S.PopupText>!회원가입 오류</S.PopupText>
             </S.PopupContainer>
           )}
         </S.Contain>

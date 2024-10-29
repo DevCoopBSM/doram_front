@@ -72,6 +72,7 @@ export const Login = styled.div`
   font-size: 24px;
   font-weight: "400";
   word-wrap: "break-word";
+  cursor: pointer;
 `;
 
 export const AccountBtn = styled.button`
