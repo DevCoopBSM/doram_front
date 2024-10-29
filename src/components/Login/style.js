@@ -80,7 +80,7 @@ export const LoginBtn = styled.button`
   margin-top: 20px;
   width: 700px;
   height: 77px;
-  background-color: #41434c;
+  background-color: #8ee559;
   color: #ffffff;
   font-size: 32px;
   font-weight: "400";
