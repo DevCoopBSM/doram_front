@@ -20,11 +20,10 @@ export const Contain = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
 `;
 
 export const Logo = styled.img`
-  margin-top: 80px;
+  margin-top: 40px;
   width: 263px;
   height: 85px;
 `;
@@ -75,11 +74,11 @@ export const Login = styled.div`
   word-wrap: "break-word";
 `;
 
-export const LoginBtn = styled.button`
+export const AccountBtn = styled.button`
   margin-top: 20px;
   width: 700px;
   height: 77px;
-  background-color: #41434c;
+  background-color: #8ee559;
   color: #ffffff;
   font-size: 32px;
   font-weight: "400";
