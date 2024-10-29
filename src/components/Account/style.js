@@ -45,7 +45,7 @@ export const InputSection = styled.div`
 
 export const Input = styled.input`
   width: 700px;
-  color: #808080;
+  color: black;
   font-size: 24px;
   font-weight: 400;
   background-color: #f2f2f2;
