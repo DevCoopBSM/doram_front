@@ -18,8 +18,8 @@ function App() {
       <GlobalStyle />
       <div style={{ display: "flex" }}>
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/main" element={<Main />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Main />} />
           <Route path="/user" element={<User />} />
           <Route path="/save" element={<Save />} />
           <Route path="/write" element={<Write />} />

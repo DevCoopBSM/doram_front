@@ -17,10 +17,9 @@ export const Logo = styled.img`
 `;
 
 export const SearchBar = styled.input`
-  flex-grow: 1;
-  max-width: 600px;
+  width: 600px;
+  height: 45px;
   padding: 10px;
-  margin: 0 20px;
   border-radius: 8px;
   border: 4px solid #0eb400;
   background: #fff;
@@ -28,7 +27,7 @@ export const SearchBar = styled.input`
   font-size: 18px;
   font-weight: 700;
   padding-left: 30px;
-  margin-left: 200px;
+  margin: 0 20px;
 `;
 
 export const WriteButton = styled.button`

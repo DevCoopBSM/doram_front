@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   HeaderContainer,
@@ -16,7 +16,25 @@ import alarmIcon from "../../assets/alarm.svg";
 
 const UserHeader = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const navigate = useNavigate(); // useNavigate 훅 사용
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userId, setUserId] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const checkLoginStatus = async () => {
+      try {
+        const response = await fetch('/api/user/status');
+        const data = await response.json();
+        setIsLoggedIn(data.isLoggedIn);
+        setUserId(data.userId);
+      } catch (error) {
+        console.error('Failed to fetch user status:', error);
+        setIsLoggedIn(false);
+      }
+    };
+    
+    checkLoginStatus();
+  }, []);
 
   const handleProfileClick = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -24,15 +42,19 @@ const UserHeader = () => {
 
   const handleNavigation = (path) => {
     navigate(path);
-    setIsDropdownOpen(false); // 메뉴 클릭 후 드롭다운 메뉴를 닫음
+    setIsDropdownOpen(false);
   };
 
   const handleLogoClick = () => {
-    navigate("/"); // 메인 페이지로 이동
+    navigate("/");
   };
 
   const handleWriteClick = () => {
-    navigate("/write");
+    if (isLoggedIn) {
+      navigate("/write");
+    } else {
+      navigate("/login");
+    }
   };
 
   return (
@@ -41,23 +63,31 @@ const UserHeader = () => {
       <SearchBar placeholder="검색어를 입력하세요" />
       <WriteButton onClick={handleWriteClick}>글 작성</WriteButton>
       
-      <UserProfile onClick={handleProfileClick}>
-        <img src={userImage} alt="User Profile" />
-        <span>UserName</span>
-        {isDropdownOpen && (
-          <DropdownMenu>
-            <DropdownItem onClick={() => handleNavigation("/savewrite")}>
-              임시 저장 목록
-            </DropdownItem>
-            <DropdownItem onClick={() => handleNavigation("/user")}>
-              내 정보
-            </DropdownItem>
-          </DropdownMenu>
-        )}
-      </UserProfile>
-      <AlarmButton>
-        <img src={alarmIcon} alt="Alarm" />
-      </AlarmButton>
+      {isLoggedIn ? (
+        <>
+          <UserProfile onClick={handleProfileClick}>
+            <img src={userImage} alt="User Profile" />
+            <span>{userId}</span>
+            {isDropdownOpen && (
+              <DropdownMenu>
+                <DropdownItem onClick={() => handleNavigation("/savewrite")}>
+                  임시 저장 목록
+                </DropdownItem>
+                <DropdownItem onClick={() => handleNavigation("/user")}>
+                  내 정보
+                </DropdownItem>
+              </DropdownMenu>
+            )}
+          </UserProfile>
+          <AlarmButton>
+            <img src={alarmIcon} alt="Alarm" />
+          </AlarmButton>
+        </>
+      ) : (
+        <div onClick={() => navigate("/login")} style={{ cursor: 'pointer' }}>
+          로그인
+        </div>
+      )}
     </HeaderContainer>
   );
 };

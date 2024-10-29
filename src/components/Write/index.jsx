@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { PageContainer, WriteContainer, EditorSection, PreviewSection, MarkdownEditor, PreviewContent, PreviewTitle, TitleInput, ButtonContainer, LeftButton, FeedbackButton, TempSaveButton, PublishButton, KeywordContainer, KeywordTag, RemoveButton, AddKeywordButton, KeywordInput, ToolbarContainer, ToolbarButton } from './style';
+import { saveBook } from '../../api/bookApi';
 
 const WritePage = () => {
   const [title, setTitle] = useState('');
-  const [markdownContent, setMarkdownContent] = useState('');
+  const [bookContent, setbookContent] = useState('');
   const [keywords, setKeywords] = useState([]);
   const [isAddingKeyword, setIsAddingKeyword] = useState(false);
   const [newKeyword, setNewKeyword] = useState('');
@@ -15,7 +16,7 @@ const WritePage = () => {
   };
 
   const handleEditorChange = (e) => {
-    setMarkdownContent(e.target.value);
+    setbookContent(e.target.value);
   };
 
   const handleExit = () => {
@@ -26,8 +27,21 @@ const WritePage = () => {
     alert('피드백 버튼을 눌렀습니다.');
   };
 
-  const handleTempSave = () => {
-    alert('임시 저장 버튼을 눌렀습니다.');
+  const handleTempSave = async () => {
+    try {
+      const bookData = {
+        bookTitle: title,
+        bookTagList: keywords,
+        bookContent: bookContent,
+        bookType: "TEMPORARY_SAVED"
+      };
+
+      const response = await saveBook(bookData);
+      alert(response.message);
+    } catch (error) {
+      alert('임시 저장 중 오류가 발생했습니다.');
+      console.error('임시 저장 오류:', error);
+    }
   };
 
   const handlePublish = () => {
@@ -85,7 +99,7 @@ const WritePage = () => {
     const textarea = document.querySelector('textarea');
     const start = textarea.selectionStart;
     const end = textarea.selectionEnd;
-    const selectedText = markdownContent.substring(start, end);
+    const selectedText = bookContent.substring(start, end);
     let newText = '';
 
     switch(type) {
@@ -111,8 +125,8 @@ const WritePage = () => {
         return;
     }
 
-    const newContent = markdownContent.substring(0, start) + newText + markdownContent.substring(end);
-    setMarkdownContent(newContent);
+    const newContent = bookContent.substring(0, start) + newText + bookContent.substring(end);
+    setbookContent(newContent);
   };
 
   return (
@@ -161,7 +175,7 @@ const WritePage = () => {
           </ToolbarContainer>
 
           <MarkdownEditor
-            value={markdownContent}
+            value={bookContent}
             onChange={handleEditorChange}
             placeholder="내용 작성..."
           />
@@ -176,7 +190,7 @@ const WritePage = () => {
         </EditorSection>
         <PreviewSection>
           {title && <PreviewTitle>{title}</PreviewTitle>}
-          <PreviewContent dangerouslySetInnerHTML={{ __html: parseMarkdown(markdownContent) }} />
+          <PreviewContent dangerouslySetInnerHTML={{ __html: parseMarkdown(bookContent) }} />
         </PreviewSection>
       </WriteContainer>
     </PageContainer>
