@@ -1,13 +1,22 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { HeaderContainer, Logo, SearchBar, WriteButton, UserProfile, DropdownMenu, DropdownItem, AlarmButton } from './style';
-import logo from '../../assets/logo.png';
-import userImage from '../../assets/userImage.svg';
-import alarmIcon from '../../assets/alarm.svg';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  HeaderContainer,
+  Logo,
+  SearchBar,
+  WriteButton,
+  UserProfile,
+  DropdownMenu,
+  DropdownItem,
+  AlarmButton,
+} from "./style";
+import logo from "../../assets/logo.png";
+import userImage from "../../assets/userImage.svg";
+import alarmIcon from "../../assets/alarm.svg";
 
 const UserHeader = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const navigate = useNavigate();  // useNavigate 훅 사용
+  const navigate = useNavigate(); // useNavigate 훅 사용
 
   const handleProfileClick = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -15,15 +24,15 @@ const UserHeader = () => {
 
   const handleNavigation = (path) => {
     navigate(path);
-    setIsDropdownOpen(false);  // 메뉴 클릭 후 드롭다운 메뉴를 닫음
+    setIsDropdownOpen(false); // 메뉴 클릭 후 드롭다운 메뉴를 닫음
   };
 
   const handleLogoClick = () => {
-    navigate('/');  // 메인 페이지로 이동
+    navigate("/"); // 메인 페이지로 이동
   };
 
   const handleWriteClick = () => {
-    navigate('/write');
+    navigate("/write");
   };
 
   return (
@@ -37,8 +46,12 @@ const UserHeader = () => {
         <span>UserName</span>
         {isDropdownOpen && (
           <DropdownMenu>
-            <DropdownItem onClick={() => handleNavigation('/save')}>임시 저장 목록</DropdownItem>
-            <DropdownItem onClick={() => handleNavigation('/user')}>내 정보</DropdownItem>
+            <DropdownItem onClick={() => handleNavigation("/savewrite")}>
+              임시 저장 목록
+            </DropdownItem>
+            <DropdownItem onClick={() => handleNavigation("/user")}>
+              내 정보
+            </DropdownItem>
           </DropdownMenu>
         )}
       </UserProfile>

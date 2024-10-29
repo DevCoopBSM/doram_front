@@ -7,6 +7,9 @@ import Save from "./components/SaveList/index";
 import Write from "./components/Write/index";
 import Detail from "./components/Detail/index";
 import Modify from "./components/Modify/index";
+import SaveWrite from "./components/SaveWrite/index";
+import Login from "./components/Login/index";
+import Account from "./components/Account/index";
 import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
@@ -15,12 +18,15 @@ function App() {
       <GlobalStyle />
       <div style={{ display: "flex" }}>
         <Routes>
-          <Route path="/" element={<Main />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/main" element={<Main />} />
           <Route path="/user" element={<User />} />
           <Route path="/save" element={<Save />} />
           <Route path="/write" element={<Write />} />
           <Route path="/detail" element={<Detail />} />
           <Route path="/modify" element={<Modify />} />
+          <Route path="/savewrite" element={<SaveWrite />} />
+          <Route path="/account" element={<Account />} />
           <Route path="/*" element={<NotFoundPage />} />
         </Routes>
       </div>
