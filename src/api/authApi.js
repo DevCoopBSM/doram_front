@@ -1,31 +1,40 @@
 import axios from 'axios';
-
-const BASE_URL = 'http://localhost:8080';
-
-// axios 인스턴스 생성
-const axiosInstance = axios.create({
-  baseURL: BASE_URL,
+    
+const api = axios.create({
+  baseURL: 'https://doram.bsm-aripay.kr',
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
-    'Access-Control-Allow-Origin': '*',
   },
+  withCredentials: true
 });
 
 export const login = async (loginData) => {
   try {
-    const response = await axiosInstance.post('/auth/login', loginData);
-    const token = response.data.Authorization;
+    const response = await api.post('/auth/login', {
+      userId: loginData.userId,
+      userPassword: loginData.userPassword
+    });
     
-    // 토큰을 로컬 스토리지에 저장
-    localStorage.setItem('token', token);
-    
-    // axios 기본 헤더에 토큰 설정
-    axiosInstance.defaults.headers.common['Authorization'] = token;
+    const token = response.headers.authorization;
+    if (token) {
+      localStorage.setItem('token', token);
+      api.defaults.headers.common['Authorization'] = token;
+    }
     
     return response.data;
   } catch (error) {
-    console.error('Login error:', error);
+    console.error('로그인 에러:', error);
+    throw error;
+  }
+};
+
+export const signup = async (signupData) => {
+  try {
+    const response = await api.post('/auth/signup', signupData);
+    return response.data;
+  } catch (error) {
+    console.error('회원가입 에러:', error);
     throw error;
   }
 }; 

@@ -6,46 +6,44 @@ import logo from "../../assets/doram.png";
 import { login } from "../../api/authApi";
 
 const Login = () => {
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [popupMessage, setPopupMessage] = useState("");
   const [inputs, setInputs] = useState({
     userId: "",
     userPassword: "",
   });
-
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [popupMessage, setPopupMessage] = useState("");
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setInputs((prev) => ({
+    setInputs(prev => ({
       ...prev,
-      [name]: value,
+      [name]: value
     }));
-  };
-
-  const handleLoginClick = async () => {
-    try {
-      const loginData = {
-        userId: inputs.userId,
-        userPassword: inputs.userPassword
-      };
-      
-      await login(loginData);
-      navigate("/main");
-    } catch (error) {
-      setPopupMessage("로그인에 실패했습니다.");
-      setIsPopupOpen(true);
-      setTimeout(() => setIsPopupOpen(false), 2000);
-    }
-  };
-
-  const Togoaccount = () => {
-    navigate("/account");
   };
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       handleLoginClick();
+    }
+  };
+
+  const handleLoginClick = async () => {
+    try {
+      if (!inputs.userId || !inputs.userPassword) {
+        setPopupMessage("아이디와 비밀번호를 모두 입력해주세요.");
+        setIsPopupOpen(true);
+        setTimeout(() => setIsPopupOpen(false), 2000);
+        return;
+      }
+      
+      await login(inputs);
+      navigate("/main");
+    } catch (error) {
+      const errorMessage = error.response?.data?.message || "로그인에 실패했습니다.";
+      setPopupMessage(errorMessage);
+      setIsPopupOpen(true);
+      setTimeout(() => setIsPopupOpen(false), 2000);
     }
   };
 
@@ -74,10 +72,10 @@ const Login = () => {
             />
           </S.InputSection>
           <S.LoginSection>
-            <S.Text2>만약 계정이 없다면?</S.Text2>
-            <S.Login onClick={Togoaccount}>회원가입하기</S.Login>
+            <S.Text2>아직 계정이 없다면?</S.Text2>
+            <S.Login onClick={() => navigate("/account")}>회원가입하기</S.Login>
           </S.LoginSection>
-          <S.LoginBtn onClick={handleLoginClick}>로그인</S.LoginBtn>
+          <S.LoginBtn onClick={handleLoginClick}>로그인하기</S.LoginBtn>
           {isPopupOpen && (
             <S.PopupContainer>
               <S.PopupText>{popupMessage}</S.PopupText>
