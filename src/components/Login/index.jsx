@@ -25,7 +25,12 @@ const Login = () => {
 
   const handleLoginClick = async () => {
     try {
-      await login(inputs);
+      const loginData = {
+        userId: inputs.userId,
+        userPassword: inputs.userPassword
+      };
+      
+      await login(loginData);
       navigate("/main");
     } catch (error) {
       setPopupMessage("로그인에 실패했습니다.");
@@ -36,6 +41,12 @@ const Login = () => {
 
   const Togoaccount = () => {
     navigate("/account");
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleLoginClick();
+    }
   };
 
   return (
@@ -50,6 +61,7 @@ const Login = () => {
               name="userId"
               value={inputs.userId}
               onChange={handleInputChange}
+              onKeyPress={handleKeyPress}
               placeholder="아이디를 입력해 주세요." 
             />
             <S.Input 
@@ -57,6 +69,7 @@ const Login = () => {
               type="password"
               value={inputs.userPassword}
               onChange={handleInputChange}
+              onKeyPress={handleKeyPress}
               placeholder="비밀번호를 입력해 주세요." 
             />
           </S.InputSection>
