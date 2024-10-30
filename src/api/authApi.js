@@ -5,15 +5,21 @@ const api = axios.create({
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
   },
-  withCredentials: true
+  withCredentials: false
 });
 
 export const login = async (loginData) => {
   try {
-    const response = await api.post('/auth/login', {
+    const response = await api.post('/api/auth/login', {
       userId: loginData.userId,
       userPassword: loginData.userPassword
+    }, {
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      }
     });
     
     const token = response.headers.authorization;
@@ -31,7 +37,7 @@ export const login = async (loginData) => {
 
 export const signup = async (signupData) => {
   try {
-    const response = await api.post('/auth/signup', signupData);
+    const response = await api.post('api/auth/signup', signupData);
     return response.data;
   } catch (error) {
     console.error('회원가입 에러:', error);
