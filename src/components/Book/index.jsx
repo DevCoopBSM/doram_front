@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import Header from '../Header';
+import Layout from '../Layout';
 import { 
     BookContainer, 
     BookContent, 
@@ -24,9 +24,8 @@ function Book() {
     };
 
     return (
-        <>
+        <Layout>
             <BookContainer>
-            <Header />
                 <BookContent>
                     <Title>{dummyData.title}</Title>
                     <InfoContainer>
@@ -48,7 +47,7 @@ function Book() {
                     </InfoContainer>
                 </BookContent>
             </BookContainer>
-        </>
+        </Layout>
     );
 }
 

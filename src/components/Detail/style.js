@@ -127,8 +127,8 @@ export const DescriptionBox = styled.textarea`
 
 export const SaveBtn = styled.button`
   position: absolute;
-  bottom: 60px;
-  left: 75%;
+  bottom: 450px;
+  left: 72%;
   margin-top: 75px;
   width: 120px;
   height: 55px;
@@ -140,4 +140,62 @@ export const SaveBtn = styled.button`
   cursor: pointer;
   border: none;
   white-space: nowrap;
+`;
+
+export const PreviewContainer = styled.div`
+  width: 100%;
+  padding: 30px;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  margin: 40px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+`;
+
+export const PreviewTitle = styled.h2`
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 24px;
+  color: #333;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 16px;
+`;
+
+export const PreviewContent = styled.div`
+  font-size: 16px;
+  line-height: 1.8;
+  color: #4a4a4a;
+  white-space: pre-wrap;
+  max-height: 500px;
+  overflow-y: auto;
+  padding: 10px;
+
+  h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 24px 0 16px;
+    color: #2c3e50;
+  }
+
+  h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px 0 14px;
+    color: #34495e;
+  }
+
+  code {
+    background-color: #f0f0f0;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+  }
+
+  ul, ol {
+    margin-left: 20px;
+    margin-bottom: 16px;
+  }
+
+  li {
+    margin-bottom: 8px;
+  }
 `;

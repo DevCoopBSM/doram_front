@@ -38,21 +38,13 @@ const WritePage = () => {
         return;
       }
 
-      const bookData = {
-        bookTitle: title,
-        bookTagList: keywords,
-        bookContent: bookContent,
-        bookType: "TEMPORARY_SAVED"
-      };
+      localStorage.setItem('writeTitle', title);
+      localStorage.setItem('writeKeywords', JSON.stringify(keywords));
+      localStorage.setItem('writeContent', bookContent);
 
-      const response = await saveBook(bookData);
       alert('임시저장이 완료되었습니다.');
     } catch (error) {
-      if (error.message === '인증 토큰이 없습니다. 다시 로그인해주세요.') {
-        alert(error.message);
-      } else {
-        alert('임시 저장 중 오류가 발생했습니다.');
-      }
+      alert('임시 저장 중 오류가 발생했습니다.');
       console.error('임시 저장 오류:', error);
     }
   };
@@ -68,23 +60,14 @@ const WritePage = () => {
         return;
       }
 
-      const bookData = {
-        bookTitle: title,
-        bookTagList: keywords,
-        bookContent: bookContent,
-        bookType: "PUBLISHED"
-      };
+      localStorage.setItem('writeTitle', title);
+      localStorage.setItem('writeKeywords', JSON.stringify(keywords));
+      localStorage.setItem('writeContent', bookContent);
 
-      const response = await saveBook(bookData);
-      alert('출간이 완료되었습니다.');
-      navigate(`/detail/${response.bookId}`);
+      navigate('/detail');
     } catch (error) {
-      if (error.message === '인증 토큰이 없습니다. 다시 로그인해주세요.') {
-        alert(error.message);
-      } else {
-        alert('출간 중 오류가 발생했습니다.');
-      }
-      console.error('출간 오류:', error);
+      alert('오류가 발생했습니다.');
+      console.error('오류:', error);
     }
   };
 

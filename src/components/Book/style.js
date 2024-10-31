@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const BookContainer = styled.div`
     width: 100%;
     padding: 20px;
-    margin-top: 60px;
 `;
 
 export const BookContent = styled.div`
@@ -12,8 +11,6 @@ export const BookContent = styled.div`
     margin-top: 100px;
     padding: 20px;
     background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
 export const Title = styled.h1`
