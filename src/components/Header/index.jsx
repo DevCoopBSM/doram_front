@@ -23,16 +23,16 @@ const UserHeader = () => {
   useEffect(() => {
     const checkLoginStatus = async () => {
       try {
-        const response = await fetch('/api/user/status');
+        const response = await fetch("/api/user/status");
         const data = await response.json();
         setIsLoggedIn(data.isLoggedIn);
         setUserId(data.userId);
       } catch (error) {
-        console.error('Failed to fetch user status:', error);
+        console.error("Failed to fetch user status:", error);
         setIsLoggedIn(false);
       }
     };
-    
+
     checkLoginStatus();
   }, []);
 
@@ -60,9 +60,9 @@ const UserHeader = () => {
   return (
     <HeaderContainer>
       <Logo src={logo} alt="Logo" onClick={handleLogoClick} />
-      <SearchBar placeholder="검색어를 입력하세요" />
+      <SearchBar placeholder="검색어를 입력하세요." />
       <WriteButton onClick={handleWriteClick}>글 작성</WriteButton>
-      
+
       {isLoggedIn ? (
         <>
           <UserProfile onClick={handleProfileClick}>
@@ -84,7 +84,7 @@ const UserHeader = () => {
           </AlarmButton>
         </>
       ) : (
-        <div onClick={() => navigate("/login")} style={{ cursor: 'pointer' }}>
+        <div onClick={() => navigate("/login")} style={{ cursor: "pointer" }}>
           로그인
         </div>
       )}

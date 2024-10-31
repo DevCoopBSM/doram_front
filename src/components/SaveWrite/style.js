@@ -25,10 +25,11 @@ export const Container = styled.div`
 export const Title = styled.div`
   color: "black";
   font-size: 32px;
-  font-weight: 800;
   margin-left: 20px;
   padding-top: 50px;
   white-space: nowrap;
+  font-family: "NanumSquareNeoExtraBold";
+  font-weight: 800;
 `;
 
 export const WriteSection = styled.div`

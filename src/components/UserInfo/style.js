@@ -62,12 +62,14 @@ export const UserName = styled.h2`
 
 export const Name = styled.div`
   font-size: 36px;
-  font-weight: bold;
+  font-family: "NanumSquareNeoExtraBold";
+  font-weight: 800;
 `;
 
 export const UserEmail = styled.div`
   font-size: 24px;
   color: #666;
+  font-family: "NanumSquareNeo";
 `;
 
 export const UserBio = styled.p`
@@ -116,6 +118,11 @@ export const FollowerFollowingCount = styled.div`
   }
 `;
 
+export const Num = styled.div`
+  font-family: "NanumSquareNeoExtraBold";
+  font-weight: 800;
+`;
+
 export const WriteSection = styled.div`
   margin-top: 50px;
 `;
@@ -133,6 +140,8 @@ export const WriteCategory = styled.button`
   border-radius: 8px 8px 0 0;
   cursor: pointer;
   border: none;
+  font-family: "NanumSquareNeoBold";
+  font-weight: 700;
 `;
 
 export const LikeCategory = styled(WriteCategory)``;

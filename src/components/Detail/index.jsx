@@ -14,7 +14,8 @@ const Detail = () => {
           <S.SelectSection>
             <S.DetailSection>
               <S.Detail>
-                공개 설정
+                <S.Font>공개 설정</S.Font>
+
                 <S.BtnContainer>
                   <S.Btn
                     onClick={() => setPublicStatus(true)}
@@ -46,7 +47,9 @@ const Detail = () => {
           <S.UploadBtn>썸네일 업로드하기</S.UploadBtn>
         </S.ImgSection>
         <S.DescriptionSection>
-          <S.Detail>설명</S.Detail>
+          <S.Detail>
+            <S.Font>설명</S.Font>
+          </S.Detail>
           <S.DescriptionBox></S.DescriptionBox>
         </S.DescriptionSection>
         <S.SaveBtn>저장</S.SaveBtn>

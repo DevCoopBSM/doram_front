@@ -30,9 +30,10 @@ export const SelectSection = styled.div`
 export const Title = styled.div`
   color: "black";
   font-size: 32px;
-  font-weight: 800;
   margin-left: 20px;
   white-space: nowrap;
+  font-family: "NanumSquareNeoExtraBold";
+  font-weight: 800;
 `;
 
 export const DetailSection = styled.div`
@@ -40,11 +41,13 @@ export const DetailSection = styled.div`
   flex-direction: column;
   gap: 40px;
 `;
-
+export const Font = styled.div`
+  font-family: "NanumSquareNeoExtraBold";
+  font-weight: 800;
+`;
 export const Detail = styled.div`
   color: "black";
   font-size: 24px;
-  font-weight: 600;
 `;
 
 export const BtnContainer = styled.div`
@@ -124,8 +127,9 @@ export const SaveBtn = styled.button`
   background: var(--Primary, #8ee559);
   color: #fff;
   font-size: 24px;
-  font-weight: 800;
   cursor: pointer;
   border: none;
   white-space: nowrap;
+  font-family: "NanumSquareNeoExtraBold";
+  font-weight: 800;
 `;
