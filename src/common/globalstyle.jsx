@@ -7,7 +7,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: "Helvetica", "Arial", sans-serif;
+    font-family: "NanumSquareNeo";
     line-height: 1.5;
   }
 

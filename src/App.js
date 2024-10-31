@@ -12,7 +12,7 @@ import Account from "./components/Account/index";
 import NotFoundPage from "./pages/NotFoundPage";
 import Book from "./components/Book/index";
 
-import { AuthProvider } from './context/AuthContext';
+import { AuthProvider } from "./context/AuthContext";
 
 function App() {
   return (

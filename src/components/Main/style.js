@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const MainContainer = styled.main`
   width: 1152px;
@@ -8,19 +8,35 @@ export const MainContainer = styled.main`
 
 export const Banner = styled.div`
   display: flex;
+  flex-direction: column;
   width: 100%;
   height: 180px;
   justify-content: center;
   align-items: center;
-  background-color: #8EE559;
+  background-color: #8ee559;
   margin-bottom: 20px;
   text-align: center;
+`;
+
+export const BannerText = styled.div`
+  font-weight: 400;
+  font-family: "NanumSquareNeo";
+  color: black;
+  font-size: 24px;
+`;
+
+export const BannerText2 = styled.div`
+  font-weight: 400;
+  font-size: 36px;
+  font-family: "Jalnan";
 `;
 
 export const SectionTitle = styled.h2`
   text-align: left;
   margin-bottom: 10px;
   margin-top: 50px;
+  font-family: "NanumSquareNeoBold";
+  font-weight: 700;
 `;
 
 export const CategorySection = styled.div`
@@ -43,13 +59,13 @@ export const CategoryButton = styled.button`
   background-color: #fff;
   cursor: pointer;
   border-radius: 8px;
-  border: 2px solid #0EB400;
+  border: 2px solid #0eb400;
   color: #000;
   font-size: 16px;
   width: auto;
   height: 6%;
   font-weight: 400;
-
+  font-family: "NanumSquareNeo";
   &:hover {
     background-color: #ddd;
   }
@@ -81,10 +97,13 @@ export const BookInfo = styled.div`
 
 export const BookTitle = styled.span`
   font-size: 14px;
-  font-weight: bold;
+  font-family: "NanumSquareNeoBold";
+  font-weight: 700;
 `;
 
 export const BookAuthor = styled.span`
   font-size: 12px;
   color: #555;
+  font-weight: 400;
+  font-family: "NanumSquareNeo";
 `;
