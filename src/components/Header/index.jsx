@@ -23,7 +23,20 @@ const UserHeader = () => {
   useEffect(() => {
     const checkLoginStatus = async () => {
       try {
-        const response = await fetch('/api/user/status');
+        const response = await fetch('/api/user', {
+          method: 'GET',
+          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        });
+        
+        if (response.status === 403) {
+          console.log('인증되지 않은 사용자입니다.');
+          setIsLoggedIn(false);
+          return;
+        }
+        
         const data = await response.json();
         setIsLoggedIn(data.isLoggedIn);
         setUserId(data.userId);
