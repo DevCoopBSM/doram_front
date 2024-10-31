@@ -4,6 +4,7 @@ import UserHeader from "../Header";
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/doram.png";
 import { login } from "../../api/authApi";
+import { useAuth } from '../../context/AuthContext';
 
 const Login = () => {
   const [inputs, setInputs] = useState({
@@ -13,6 +14,7 @@ const Login = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [popupMessage, setPopupMessage] = useState("");
   const navigate = useNavigate();
+  const { setIsLoggedIn } = useAuth();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -36,12 +38,14 @@ const Login = () => {
         setTimeout(() => setIsPopupOpen(false), 2000);
         return;
       }
+
+      const data = await login(inputs);
+      setIsLoggedIn(true);
+      navigate("/"); // 메인 페이지로 이동
       
-      await login(inputs);
-      navigate("/main");
     } catch (error) {
-      const errorMessage = error.response?.data?.message || "로그인에 실패했습니다.";
-      setPopupMessage(errorMessage);
+      console.error("Login error:", error);
+      setPopupMessage("아이디 또는 비밀번호가 올바르지 않습니다.");
       setIsPopupOpen(true);
       setTimeout(() => setIsPopupOpen(false), 2000);
     }

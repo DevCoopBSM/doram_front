@@ -12,8 +12,11 @@ import Login from "./components/Login/index";
 import Account from "./components/Account/index";
 import NotFoundPage from "./pages/NotFoundPage";
 
+import { AuthProvider } from './context/AuthContext';
+
 function App() {
   return (
+    <AuthProvider>
     <Router>
       <GlobalStyle />
       <div style={{ display: "flex" }}>
@@ -31,6 +34,7 @@ function App() {
         </Routes>
       </div>
     </Router>
+    </AuthProvider>
   );
 }
 
