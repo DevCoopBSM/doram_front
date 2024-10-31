@@ -28,6 +28,8 @@ export const SearchBar = styled.input`
   font-weight: 700;
   padding-left: 30px;
   margin: 0 20px;
+  font-family: "NanumSquareNeoBold";
+  background-image: ;
 `;
 
 export const WriteButton = styled.button`
@@ -42,7 +44,8 @@ export const WriteButton = styled.button`
   background: var(--Primary, #8ee559);
   color: #fff;
   font-size: 20px;
-  font-weight: 400;
+  font-family: "NanumSquareNeoBold";
+  font-weight: 700;
 `;
 
 export const UserProfile = styled.div`

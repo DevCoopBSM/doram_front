@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const PageContainer = styled.div`
   display: flex;
@@ -13,7 +13,7 @@ export const WriteContainer = styled.div`
   display: flex;
   width: 90%;
   height: 80vh;
-  background-color: white;  
+  background-color: white;
   overflow: hidden;
 `;
 
@@ -32,7 +32,7 @@ export const PreviewSection = styled.div`
   height: 100%;
   padding: 20px;
   overflow-y: auto;
-  
+
   &::-webkit-scrollbar {
     width: 10px;
   }
@@ -57,10 +57,11 @@ export const MarkdownEditor = styled.textarea`
   min-width: 100%;
   border: none;
   resize: none;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   font-size: 16px;
   line-height: 1.5;
   padding: 20px;
+  padding-left: 58px;
   border-radius: 8px;
   &:focus {
     outline: none;
@@ -78,7 +79,12 @@ export const PreviewContent = styled.div`
   font-family: Arial, sans-serif;
   line-height: 1.6;
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     margin-top: 0.3em;
     margin-bottom: -0.3em;
   }
@@ -110,8 +116,9 @@ export const TitleInput = styled.input`
   width: 90%;
   padding: 10px;
   margin-bottom: 20px;
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 28px;
+  font-family: "NanumSquareNeoExtraBold";
+  font-weight: 800;
   border: none;
   &:focus {
     outline: none;
@@ -131,7 +138,7 @@ export const LeftButton = styled.button`
   color: #616161;
   font-weight: 500;
   font-size: 16px;
-  border: 2px solid #CCC;
+  border: 2px solid #ccc;
   border-radius: 8px;
   cursor: pointer;
   font-weight: bold;
@@ -151,8 +158,8 @@ export const RightButton = styled.button`
 `;
 
 export const FeedbackButton = styled(RightButton)`
-  background: var(--Primary, #8EE559);
-  color: #FFF;
+  background: var(--Primary, #8ee559);
+  color: #fff;
   font-size: 16px;
   font-weight: 500;
   &:hover {
@@ -166,17 +173,17 @@ export const TempSaveButton = styled(RightButton)`
   font-size: 16px;
   font-weight: 500;
   padding: 10px 10px;
-  border: 2px solid var(--Primary, #8EE559);
+  border: 2px solid var(--Primary, #8ee559);
   &:hover {
     background-color: #f0fff0;
   }
 `;
 
 export const PublishButton = styled(RightButton)`
-  color: #FFF;
+  color: #fff;
   font-size: 16px;
   font-weight: 500;
-  background: var(--Primary, #8EE559);
+  background: var(--Primary, #8ee559);
   &:hover {
     background-color: #7cd94e;
   }
@@ -192,7 +199,7 @@ export const KeywordContainer = styled.div`
 
 export const KeywordTag = styled.span`
   border-radius: 8px;
-  border: 2px solid #0EB400;
+  border: 2px solid #0eb400;
   margin-right: 10px;
   margin-bottom: 10px;
   padding-left: 10px;
@@ -209,7 +216,7 @@ export const RemoveButton = styled.button`
   font-size: 16px;
   width: 5vh;
   height: 20px;
-  
+
   &:hover {
     color: #495057;
   }
@@ -223,7 +230,7 @@ export const AddKeywordButton = styled.button`
   font-size: 14px;
   height: 25px;
   margin-right: 15px;
-  
+
   &:hover {
     color: #495057;
   }
@@ -239,7 +246,7 @@ export const KeywordInput = styled.input`
   width: 30vh;
   height: 35px;
   margin-right: 10px;
-  
+
   &::placeholder {
     color: #868e96;
   }
@@ -249,6 +256,7 @@ export const ToolbarContainer = styled.div`
   display: flex;
   gap: 12px;
   padding: 8px 0;
+  padding-left: 13px;
   margin-bottom: 16px;
   width: 90%;
   align-items: center;

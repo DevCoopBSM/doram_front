@@ -17,9 +17,10 @@ export const ContentContainer = styled.div`
 export const Title = styled.div`
   color: "black";
   font-size: 32px;
-  font-weight: 800;
   margin-top: 30px;
   white-space: nowrap;
+  font-family: "NanumSquareNeoExtraBold";
+  font-weight: 800;
 `;
 
 export const UserSection = styled.div`
@@ -45,6 +46,8 @@ export const ChangeBtn = styled.button`
   background: var(--Primary, #8ee559);
   color: #fff;
   font-size: 16px;
+  font-family: "NanumSquareNeoBold";
+  font-weight: 700;
   cursor: pointer;
   border: none;
   white-space: nowrap;
@@ -53,7 +56,8 @@ export const ChangeBtn = styled.button`
 export const Detail = styled.div`
   color: "black";
   font-size: 24px;
-  font-weight: 600;
+  font-family: "NanumSquareNeoExtraBold";
+  font-weight: 700;
   margin-top: 23px;
 `;
 

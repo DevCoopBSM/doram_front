@@ -83,8 +83,9 @@ export const LoginBtn = styled.button`
   background-color: #8ee559;
   color: #ffffff;
   font-size: 32px;
-  font-weight: "400";
   word-wrap: "break-word";
+  font-family: "NanumSquareNeoExtraBold";
+  font-weight: 800;
 `;
 
 export const PopupContainer = styled.div`

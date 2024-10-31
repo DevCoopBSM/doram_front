@@ -57,11 +57,11 @@ const UserInfo = () => {
           <S.FollowerFollowingSection>
             <S.FollowerFollowingCount>
               <span>팔로워</span>
-              <span>123</span>
+              <S.Num>123</S.Num>
             </S.FollowerFollowingCount>
             <S.FollowerFollowingCount>
               <span>팔로잉</span>
-              <span>430</span>
+              <S.Num>430</S.Num>
             </S.FollowerFollowingCount>
           </S.FollowerFollowingSection>
         </S.UserSection>
