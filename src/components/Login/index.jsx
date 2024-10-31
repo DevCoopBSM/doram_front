@@ -14,7 +14,7 @@ const Login = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [popupMessage, setPopupMessage] = useState("");
   const navigate = useNavigate();
-  const { setIsLoggedIn } = useAuth();
+  const { setIsLoggedIn, setUserName } = useAuth();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -39,9 +39,10 @@ const Login = () => {
         return;
       }
 
-      const data = await login(inputs);
+      const response = await login(inputs);
       setIsLoggedIn(true);
-      navigate("/"); // 메인 페이지로 이동
+      setUserName(response.userName);
+      navigate("/");
       
     } catch (error) {
       console.error("Login error:", error);

@@ -84,7 +84,7 @@ export const Img = styled.div`
 export const UploadBtn = styled.button`
   position: relative;
   top: 192px;
-  width: 174px;
+  width: 200px;
   height: 46px;
   padding: 10px 24px;
   border-radius: 8px;
@@ -106,20 +106,32 @@ export const DescriptionSection = styled.div`
 `;
 
 export const DescriptionBox = styled.textarea`
-  width: 550px;
-  height: 104px;
-  font-size: 18px;
-  border: 2px solid #cccccc;
-  padding: 16px 28px;
-  resize: none;
-  overflow: auto;
+  width: 80vh;
+  height: 170px;
+  padding: 15px;
+  margin-bottom: 100px;
+  border: 1px solid #ddd;
   border-radius: 8px;
+  resize: none;
+  font-size: 18px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 
+    'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  
+  &:focus {
+    outline: none;
+    border-color: #AEAEAE;
+  }
+  
+  &::placeholder {
+    font-family: inherit;
+  }
 `;
 
 export const SaveBtn = styled.button`
   position: absolute;
   bottom: 60px;
-  left: 1185px;
+  left: 75%;
   margin-top: 75px;
   width: 120px;
   height: 55px;
