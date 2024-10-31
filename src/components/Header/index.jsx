@@ -13,36 +13,39 @@ import {
 import logo from "../../assets/logo.png";
 import userImage from "../../assets/userImage.svg";
 import alarmIcon from "../../assets/alarm.svg";
+import { useAuth } from "../../context/AuthContext";
 
 const UserHeader = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userId, setUserId] = useState("");
+  const [userName, setUserName] = useState("");
+  const { isLoggedIn, userName: contextUserName } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
     const checkLoginStatus = async () => {
       try {
-        const response = await fetch('/api/user', {
+        const token = localStorage.getItem('token');
+        if (!token) {
+          return;
+        }
+
+        const response = await fetch('/api/profile', {
           method: 'GET',
-          credentials: 'include',
           headers: {
             'Content-Type': 'application/json',
+            'Authorization': token
           }
         });
         
         if (response.status === 403) {
           console.log('인증되지 않은 사용자입니다.');
-          setIsLoggedIn(false);
           return;
         }
         
         const data = await response.json();
-        setIsLoggedIn(data.isLoggedIn);
-        setUserId(data.userId);
+        setUserName(data.userName);
       } catch (error) {
-        console.error('Failed to fetch user status:', error);
-        setIsLoggedIn(false);
+        console.error('로그인 상태 확인 실패:', error);
       }
     };
     
@@ -80,7 +83,7 @@ const UserHeader = () => {
         <>
           <UserProfile onClick={handleProfileClick}>
             <img src={userImage} alt="User Profile" />
-            <span>{userId}</span>
+            <span>{userName || contextUserName}</span>
             {isDropdownOpen && (
               <DropdownMenu>
                 <DropdownItem onClick={() => handleNavigation("/savewrite")}>
