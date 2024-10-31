@@ -9,7 +9,11 @@ const api = axios.create({
 });
 
 export const saveBook = async (bookData) => {
-  const token = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiJ3eHN2MTkiLCJyb2xlcyI6IlJPTEVfVVNFUiIsImlhdCI6MTczMDMwNjU0NywiZXhwIjoxNzMwMzEwMTQ3fQ.8Ky_ymHYO4186XlM6jqGeQQ6Pssre88v1K5gQKZIn0w';
+  const token = localStorage.getItem('token');
+  
+  if (!token) {
+    throw new Error('인증 토큰이 없습니다. 다시 로그인해주세요.');
+  }
   
   try {
     const response = await api.post('/api/book/save', bookData, {

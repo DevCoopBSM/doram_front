@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { PageContainer, WriteContainer, EditorSection, PreviewSection, MarkdownEditor, PreviewContent, PreviewTitle, TitleInput, ButtonContainer, LeftButton, FeedbackButton, TempSaveButton, PublishButton, KeywordContainer, KeywordTag, RemoveButton, AddKeywordButton, KeywordInput, ToolbarContainer, ToolbarButton } from './style';
 import { saveBook } from '../../api/bookApi';
 
 const WritePage = () => {
+  const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [bookContent, setbookContent] = useState('');
   const [keywords, setKeywords] = useState([]);
@@ -20,7 +22,9 @@ const WritePage = () => {
   };
 
   const handleExit = () => {
-    alert('나가기 버튼을 눌렀습니다.');
+    if (window.confirm('작성 중인 내용이 저장되지 않을 수 있습니다. 나가시겠습니까?')) {
+      navigate('/');
+    }
   };
 
   const handleFeedback = () => {
@@ -29,6 +33,11 @@ const WritePage = () => {
 
   const handleTempSave = async () => {
     try {
+      if (!title.trim()) {
+        alert('제목을 입력해주세요.');
+        return;
+      }
+
       const bookData = {
         bookTitle: title,
         bookTagList: keywords,
@@ -37,15 +46,46 @@ const WritePage = () => {
       };
 
       const response = await saveBook(bookData);
-      alert(response.message);
+      alert('임시저장이 완료되었습니다.');
     } catch (error) {
-      alert('임시 저장 중 오류가 발생했습니다.');
+      if (error.message === '인증 토큰이 없습니다. 다시 로그인해주세요.') {
+        alert(error.message);
+      } else {
+        alert('임시 저장 중 오류가 발생했습니다.');
+      }
       console.error('임시 저장 오류:', error);
     }
   };
 
-  const handlePublish = () => {
-    alert('출간 버튼을 눌렀습니다.');
+  const handlePublish = async () => {
+    try {
+      if (!title.trim()) {
+        alert('제목을 입력해주세요.');
+        return;
+      }
+      if (!bookContent.trim()) {
+        alert('내용을 입력해주세요.');
+        return;
+      }
+
+      const bookData = {
+        bookTitle: title,
+        bookTagList: keywords,
+        bookContent: bookContent,
+        bookType: "PUBLISHED"
+      };
+
+      const response = await saveBook(bookData);
+      alert('출간이 완료되었습니다.');
+      navigate(`/detail/${response.bookId}`);
+    } catch (error) {
+      if (error.message === '인증 토큰이 없습니다. 다시 로그인해주세요.') {
+        alert(error.message);
+      } else {
+        alert('출간 중 오류가 발생했습니다.');
+      }
+      console.error('출간 오류:', error);
+    }
   };
 
   const handleAddKeywordClick = () => {

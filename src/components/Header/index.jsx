@@ -29,7 +29,7 @@ const UserHeader = () => {
           return;
         }
 
-        const response = await fetch('/api/profile', {
+        const response = await fetch('/api/auth/login', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
