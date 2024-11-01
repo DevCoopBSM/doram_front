@@ -42,7 +42,10 @@ const UserInfo = () => {
       <S.ContentContainer>
         <S.UserSection>
           <S.UserLogo 
-            src={userProfile?.userImage ? `data:image/jpeg;base64,${userProfile.userImage}` : defaultUserImage} 
+            src={userProfile?.userImage 
+              ? `data:image/jpeg;base64,${userProfile.userImage}` 
+              : defaultUserImage
+            } 
             alt="User Logo" 
           />
           <S.UserDetails>
