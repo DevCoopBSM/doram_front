@@ -35,4 +35,19 @@ export const saveBook = async (bookData) => {
   } catch (error) {
     throw error;
   }
+};
+
+export const getBooks = async () => {
+  const token = localStorage.getItem('token');
+  
+  try {
+    const response = await api.get('/api/book', {
+      headers: {
+        Authorization: token
+      }
+    });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
 }; 

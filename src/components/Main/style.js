@@ -41,33 +41,36 @@ export const SectionTitle = styled.h2`
 
 export const CategorySection = styled.div`
   display: flex;
+  justify-content: flex-start;
+  gap: 12px;
+  margin: 20px 0;
   width: 100%;
-  padding: 8px 24px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  align-self: stretch;
-  margin: auto;
 `;
 
 export const CategoryButton = styled.button`
-  padding: 4px 24px;
-  background-color: #fff;
+  padding: 6px 20px;
   cursor: pointer;
-  border-radius: 8px;
-  border: 2px solid #0eb400;
-  color: #000;
-  font-size: 16px;
-  width: auto;
-  height: 6%;
-  font-weight: 400;
-  font-family: "NanumSquareNeo";
+  border-radius: 20px;
+  font-size: 14px;
+  font-family: "NanumSquareNeoBold";
+  transition: all 0.2s ease;
+  border: none;
+  background-color: #F0F0F0;
+  color: #666;
+
+  &.active {
+    background-color: #8ee559;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(142, 229, 89, 0.3);
+  }
+
   &:hover {
-    background-color: #ddd;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  &:not(.active):hover {
+    background-color: #e5e5e5;
   }
 `;
 
