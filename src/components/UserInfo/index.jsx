@@ -1,67 +1,61 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "./style";
 import UserHeader from "../Header";
-import userImage from "../../assets/userImage.svg";
-import plus from "../../assets/plus.svg";
+import { getUserProfile } from "../../api/userApi";
 
 const UserInfo = () => {
   const [activeCategory, setActiveCategory] = useState("write");
+  const [userProfile, setUserProfile] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      try {
+        const userId = localStorage.getItem('userId'); // 또는 다른 방법으로 userId 가져오기
+        const profileData = await getUserProfile(userId);
+        setUserProfile(profileData);
+      } catch (error) {
+        console.error('프로필 로딩 실패:', error);
+      }
+    };
+
+    fetchUserProfile();
+  }, []);
 
   const handleCategoryClick = (category) => {
     setActiveCategory(category);
   };
-  const navigate = useNavigate();
 
   const goToModify = () => {
     navigate("/modify");
   };
-
-  const WriteBooks = [
-    { bookname: "너를 사랑하던 어느 날에", like: 108, chat: 3 },
-    { bookname: "고양이 뒤를 따라가", like: 72, chat: 12 },
-    { bookname: "너의 편두통", like: 1, chat: 0 },
-  ];
-  const LikeBooks = [
-    { bookname: "우리가 빛의 속도로 갈 수 없다면", like: 203, chat: 12 },
-    { bookname: "데미안", like: 324, chat: 83 },
-    { bookname: "오늘의 날씨", like: 123, chat: 32 },
-  ];
-  const SaveBooks = [
-    { bookname: "제인에어", like: 982, chat: 143 },
-    { bookname: "사라진 모든 것들에게", like: 93, chat: 38 },
-    { bookname: "밤편지", like: 599, chat: 93 },
-  ];
-
-  const books =
-    activeCategory === "write"
-      ? WriteBooks
-      : activeCategory === "like"
-      ? LikeBooks
-      : SaveBooks;
 
   return (
     <S.LayoutContainer>
       <UserHeader />
       <S.ContentContainer>
         <S.UserSection>
-          <S.UserLogo src={userImage} alt="User Logo" />
+          <S.UserLogo 
+            src={userProfile?.userImage ? `data:image/jpeg;base64,${userProfile.userImage}` : defaultUserImage} 
+            alt="User Logo" 
+          />
           <S.UserDetails>
             <S.UserName>
-              <S.Name> UserName</S.Name>
-              <S.UserEmail>user@example.com</S.UserEmail>
+              <S.Name>{userProfile?.userName}</S.Name>
+              <S.UserEmail>{userProfile?.userEmail}</S.UserEmail>
               <S.EditButton onClick={goToModify}>프로필 수정</S.EditButton>
             </S.UserName>
-            <S.UserBio>유저 소개 텍스트를 여기에 표시합니다.</S.UserBio>
+            <S.UserBio>{userProfile?.userIntroduce}</S.UserBio>
           </S.UserDetails>
           <S.FollowerFollowingSection>
             <S.FollowerFollowingCount>
               <span>팔로워</span>
-              <S.Num>123</S.Num>
+              <S.Num>{userProfile?.followerCount || 0}</S.Num>
             </S.FollowerFollowingCount>
             <S.FollowerFollowingCount>
               <span>팔로잉</span>
-              <S.Num>430</S.Num>
+              <S.Num>{userProfile?.followingCount || 0}</S.Num>
             </S.FollowerFollowingCount>
           </S.FollowerFollowingSection>
         </S.UserSection>
