@@ -28,7 +28,7 @@ export const saveBook = async (bookData) => {
     const response = await api.post('/api/book/save', formData, {
       headers: {
         Authorization: token,
-        'Content-Type': 'multipart/form-data',
+        'Content-Type': 'application/json',
       }
     });
     return response.data;
