@@ -3,16 +3,19 @@ import { useNavigate } from "react-router-dom";
 import * as S from "./style";
 import UserHeader from "../Header";
 import { getUserProfile } from "../../api/userApi";
+import defaultUserImage from "../../assets/userImage.svg";
+import plus from "../../assets/plus.svg";
 
 const UserInfo = () => {
   const [activeCategory, setActiveCategory] = useState("write");
   const [userProfile, setUserProfile] = useState(null);
+  const [userBooks, setUserBooks] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
-        const userId = localStorage.getItem('userId'); // 또는 다른 방법으로 userId 가져오기
+        const userId = localStorage.getItem('userId');
         const profileData = await getUserProfile(userId);
         setUserProfile(profileData);
       } catch (error) {
@@ -84,12 +87,12 @@ const UserInfo = () => {
         </S.WriteSection>
 
         <S.ListSection>
-          {books.map((list, index) => (
-            <S.List key={index}>
-              <S.BookName>{list.bookname}</S.BookName>
+          {userBooks.map((book) => (
+            <S.List key={book.bookId}>
+              <S.BookName>{book.bookTitle}</S.BookName>
               <S.Reaction>
-                <S.Like>좋아요 {list.like}</S.Like>
-                <S.Chat> 댓글 {list.chat}</S.Chat>
+                <S.Like>좋아요 {book.likeCount || 0}</S.Like>
+                <S.Chat>댓글 {book.commentCount || 0}</S.Chat>
                 <S.Plus src={plus} alt="plus" />
               </S.Reaction>
             </S.List>
