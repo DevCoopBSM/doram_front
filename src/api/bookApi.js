@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-// axios 인스턴스 생성 및 기본 설정
+// axios
 const api = axios.create({
-  baseURL: 'https://doram.bsm-aripay.kr', // 백엔드 서버 주소로 수정해주세요
+  baseURL: 'https://doram.bsm-aripay.kr',
   headers: {
     'Content-Type': 'application/json',
   }
@@ -15,17 +15,17 @@ export const saveBook = async (bookData) => {
     throw new Error('인증 토큰이 없습니다. 다시 로그인해주세요.');
   }
   
-  const formData = new FormData();
-  formData.append('bookTitle', bookData.bookTitle);
-  formData.append('bookTagList', bookData.bookTagList);
-  formData.append('bookContent', bookData.bookContent);
-  formData.append('bookType', bookData.bookType);
-  if (bookData.bookImage) {
-    formData.append('bookImage', bookData.bookImage);
-  }
+  // JSON 형식으로 데이터 구성
+  const requestData = {
+    bookTitle: bookData.bookTitle,
+    bookTagList: bookData.bookTagList, 
+    bookContent: bookData.bookContent,
+    bookType: bookData.bookType,
+    bookImage: bookData.bookImage
+  };
   
   try {
-    const response = await api.post('/api/book/save', formData, {
+    const response = await api.post('/api/book/save', requestData, {
       headers: {
         Authorization: token,
         'Content-Type': 'application/json',
@@ -33,6 +33,7 @@ export const saveBook = async (bookData) => {
     });
     return response.data;
   } catch (error) {
+    console.error('Error details:', error.response);
     throw error;
   }
 };
