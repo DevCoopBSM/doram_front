@@ -16,15 +16,14 @@ export const login = async (loginData) => {
     const response = await api.post('/api/auth/login', {
       userId: loginData.userId,
       userPassword: loginData.userPassword
-    }, {
-      headers: {
-        'Access-Control-Allow-Origin': '*'
-      }
     });
     
     const token = response.headers.authorization;
     if (token) {
       localStorage.setItem('token', token);
+      if (response.data.userName) {
+        localStorage.setItem('userName', response.data.userName);
+      }
       api.defaults.headers.common['Authorization'] = token;
     }
     

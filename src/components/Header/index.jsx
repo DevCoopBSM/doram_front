@@ -25,27 +25,26 @@ const UserHeader = () => {
     const checkLoginStatus = async () => {
       try {
         const token = localStorage.getItem('token');
+        const storedUserName = localStorage.getItem('userName');
+        
         if (!token) {
           return;
         }
 
-        const response = await fetch('/api/auth/login', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': token
-          }
-        });
-        
-        if (response.status === 403) {
-          console.log('인증되지 않은 사용자입니다.');
-          return;
+        if (storedUserName) {
+          setUserName(storedUserName);
         }
+
+        // const response = await api.get('/api/auth/ ㅁㄴㅇㄹ ', {
+        //   headers: {
+        //     'Authorization': token
+        //   }
+        // });
         
-        const data = await response.json();
-        setUserName(data.userName);
       } catch (error) {
         console.error('로그인 상태 확인 실패:', error);
+        localStorage.removeItem('token');
+        localStorage.removeItem('userName');
       }
     };
     
