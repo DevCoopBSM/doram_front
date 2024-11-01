@@ -34,13 +34,6 @@ const UserHeader = () => {
         if (storedUserName) {
           setUserName(storedUserName);
         }
-
-        // const response = await api.get('/api/auth/ ㅁㄴㅇㄹ ', {
-        //   headers: {
-        //     'Authorization': token
-        //   }
-        // });
-        
       } catch (error) {
         console.error('로그인 상태 확인 실패:', error);
         localStorage.removeItem('token');
@@ -56,7 +49,17 @@ const UserHeader = () => {
   };
 
   const handleNavigation = (path) => {
-    navigate(path);
+    if (path === "/user") {
+      const userId = localStorage.getItem('userId');
+      if (userId) {
+        navigate(`/user/${userId}`);
+      } else {
+        console.error('사용자 ID를 찾을 수 없습니다.');
+        navigate('/login');
+      }
+    } else {
+      navigate(path);
+    }
     setIsDropdownOpen(false);
   };
 

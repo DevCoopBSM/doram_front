@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import * as S from "./style";
 import UserHeader from "../Header";
 import { getUserProfile } from "../../api/userApi";
@@ -7,6 +7,7 @@ import defaultUserImage from "../../assets/userImage.svg";
 import plus from "../../assets/plus.svg";
 
 const UserInfo = () => {
+  const { userId } = useParams();
   const [activeCategory, setActiveCategory] = useState("write");
   const [userProfile, setUserProfile] = useState(null);
   const [userBooks, setUserBooks] = useState([]);
@@ -15,7 +16,6 @@ const UserInfo = () => {
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
-        const userId = localStorage.getItem('userId');
         const profileData = await getUserProfile(userId);
         setUserProfile(profileData);
       } catch (error) {
@@ -23,8 +23,10 @@ const UserInfo = () => {
       }
     };
 
-    fetchUserProfile();
-  }, []);
+    if (userId) {
+      fetchUserProfile();
+    }
+  }, [userId]);
 
   const handleCategoryClick = (category) => {
     setActiveCategory(category);

@@ -24,6 +24,9 @@ export const login = async (loginData) => {
       if (response.data.userName) {
         localStorage.setItem('userName', response.data.userName);
       }
+      if (response.data.userId) {
+        localStorage.setItem('userId', response.data.userId);
+      }
       api.defaults.headers.common['Authorization'] = token;
     }
     

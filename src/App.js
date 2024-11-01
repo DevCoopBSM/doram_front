@@ -17,23 +17,23 @@ import { AuthProvider } from "./context/AuthContext";
 function App() {
   return (
     <AuthProvider>
-    <Router>
-      <GlobalStyle />
-      <div style={{ display: "flex" }}>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/" element={<Main />} />
-          <Route path="/user" element={<User />} />
-          <Route path="/write" element={<Write />} />
-          <Route path="/detail" element={<Detail />} />
-          <Route path="/modify" element={<Modify />} />
-          <Route path="/savewrite" element={<SaveWrite />} />
-          <Route path="/account" element={<Account />} />
-          <Route path="/book/:id" element={<Book />} /> 
-          <Route path="/*" element={<NotFoundPage />} />
-        </Routes>
-      </div>
-    </Router>
+      <Router>
+        <GlobalStyle />
+        <div style={{ display: "flex" }}>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/" element={<Main />} />
+            <Route path="/user/:userId" element={<User />} />
+            <Route path="/write" element={<Write />} />
+            <Route path="/detail" element={<Detail />} />
+            <Route path="/modify" element={<Modify />} />
+            <Route path="/savewrite" element={<SaveWrite />} />
+            <Route path="/account" element={<Account />} />
+            <Route path="/book/:id" element={<Book />} />
+            <Route path="/*" element={<NotFoundPage />} />
+          </Routes>
+        </div>
+      </Router>
     </AuthProvider>
   );
 }
