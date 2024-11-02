@@ -106,9 +106,24 @@ export const CategoryButton = styled.div`
   position: relative;
   padding-bottom: 12px;
   transition: color 0.3s ease;
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: slideIn 0.5s ease forwards;
+  animation-delay: ${props => props.index * 0.2}s;
   
   @media (max-width: ${breakpoints.mobile}) {
     font-size: 14px;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
 
   &::after {
@@ -158,27 +173,35 @@ export const BookCard = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: calc((100% - 96px) / 5);  // 기본 데스크톱: 5개
+  width: calc((100% - 96px) / 5);
   cursor: pointer;
   opacity: 0;
-  transform: translateY(-20px);
   animation: fadeInDown 0.5s ease forwards;
   animation-delay: ${props => props.index * 0.05}s;
+  padding: 10px;
+  border-radius: 8px;
 
   @media (max-width: ${breakpoints.desktop}) {
-    width: calc((100% - 60px) / 4);  // 1200px 이하: 4개
+    width: calc((100% - 60px) / 4);
   }
   
   @media (max-width: ${breakpoints.laptop}) {
-    width: calc((100% - 32px) / 3);  // 1024px 이하: 3개
+    width: calc((100% - 32px) / 3);
   }
   
   @media (max-width: ${breakpoints.tablet}) {
-    width: calc((100% - 12px) / 2);  // 768px 이하: 2개
+    width: calc((100% - 12px) / 2);
   }
   
   @media (max-width: ${breakpoints.mobile}) {
-    width: 100%;  // 480px 이하: 1개
+    width: 100%;
+  }
+
+  &:hover {
+    img, div:first-child {
+      transform: translateY(-10px);
+      box-shadow: 0 5px 15px rgba(142, 229, 89, 0.4);
+    }
   }
 
   @keyframes fadeInDown {
@@ -191,10 +214,6 @@ export const BookCard = styled.div`
       transform: translateY(0);
     }
   }
-
-  &:hover {
-    transform: translateY(-5px);
-  }
 `;
 
 export const BookCover = styled.img`
@@ -203,6 +222,16 @@ export const BookCover = styled.img`
   margin-bottom: 10px;
   object-fit: cover;
   border-radius: 4px;
+  transition: all 0.3s ease;
+`;
+
+export const DummyBookCover = styled.div`
+  width: 100%;
+  aspect-ratio: 3/4;
+  background-color: #F0F0F0;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
 `;
 
 export const BookInfo = styled.div`
@@ -230,12 +259,4 @@ export const BookAuthor = styled.span`
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 150px;
-`;
-
-export const DummyBookCover = styled.div`
-  width: 100%;
-  aspect-ratio: 3/4;
-  background-color: #F0F0F0;
-  margin-bottom: 10px;
-  border-radius: 4px;
 `;

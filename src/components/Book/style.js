@@ -200,3 +200,191 @@ export const ErrorMessage = styled.div`
         font-size: 1rem;
     }
 `;
+
+export const InteractionContainer = styled.div`
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin: 2rem 0;
+  padding: 1rem 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+`;
+
+export const InteractionButton = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  color: #666;
+  font-size: 0.9rem;
+
+  svg {
+    width: 24px;
+    height: 24px;
+    transition: all 0.2s ease;
+    
+    path {
+      stroke: ${props => props.active ? (props.type === 'like' ? '#FF6B6B' : '#8ee559') : '#CCCCCC'};
+      fill: ${props => props.active ? (props.type === 'like' ? '#FF6B6B' : '#8ee559') : 'none'};
+    }
+  }
+
+  &:hover {
+    svg path {
+      stroke: ${props => props.type === 'like' ? '#FF6B6B' : '#8ee559'};
+    }
+  }
+`;
+
+export const CommentSection = styled.div`
+  margin-top: 3rem;
+`;
+
+export const CommentSectionHeader = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+
+  h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+  }
+`;
+
+export const CommentForm = styled.form`
+  position: relative;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  max-height: ${props => props.isOpen ? '300px' : '0'};
+  opacity: ${props => props.isOpen ? '1' : '0'};
+  transform-origin: top;
+  transform: ${props => props.isOpen ? 'scaleY(1)' : 'scaleY(0)'};
+`;
+
+export const WriteCommentButton = styled.button`
+  display: flex;
+  align-items: center;
+  background: white;
+  color: #666;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  margin-left: 30px;
+  width: 300px;
+
+  &:hover {
+    color: #999;
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+`;
+
+export const CommentInput = styled.textarea`
+  width: 100%;
+  min-height: 150px;
+  padding: 1rem;
+  padding-bottom: 4rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  resize: vertical;
+  font-family: inherit;
+  font-size: 0.95rem;
+  line-height: 1.5;
+
+  &:focus {
+    outline: none;
+    border-color: #8ee559;
+  }
+
+  &::placeholder {
+    color: #999;
+  }
+`;
+
+export const CharCount = styled.span`
+  position: absolute;
+  bottom: 1.2rem;
+  left: 1rem;
+  color: #999;
+  font-size: 0.9rem;
+`;
+
+export const CommentSubmitButton = styled.button`
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  display: flex;
+  width: 100px;
+  padding: 10px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #8EE559;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: #7cd048;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+`;
+
+export const CommentList = styled.div`
+  margin-top: 2rem;
+`;
+
+export const CommentItem = styled.div`
+  padding: 1.2rem 0;
+  border-bottom: 1px solid #eee;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background-color: #f9f9f9;
+  }
+`;
+
+export const CommentHeader = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.5rem;
+`;
+
+export const CommentAuthor = styled.span`
+  font-weight: bold;
+  color: #333;
+  font-size: 0.95rem;
+`;
+
+export const CommentDate = styled.span`
+  color: #999;
+  font-size: 0.85rem;
+  &::before {
+    content: '•';
+    margin-right: 0.8rem;
+  }
+`;
+
+export const CommentContent = styled.p`
+  color: #666;
+  line-height: 1.6;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+`;

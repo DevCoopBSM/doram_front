@@ -11,16 +11,32 @@ import {
   AlarmButton,
   LoginButton,
   LoginIcon,
+  AlarmDropdown,
+  AlarmHeader,
+  CloseButton,
+  AlarmList,
+  AlarmItem,
+  AlarmContent,
+  AlarmTime,
+  DeleteButton,
+  NoAlarms,
 } from "./style";
 import logo from "../../assets/logo.png";
 import userImage from "../../assets/userImage.svg";
 import alarmIcon from "../../assets/alarm.svg";
 import loginLogo from "../../assets/loginLogo.svg";
+import closeIcon from "../../assets/close.svg";
 import { useAuth } from "../../context/AuthContext";
 
 const UserHeader = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [userName, setUserName] = useState("");
+  const [isAlarmOpen, setIsAlarmOpen] = useState(false);
+  const [notifications, setNotifications] = useState([
+    { id: 1, content: "새로운 댓글이 달렸습니다.", time: "1시간 전" },
+    { id: 2, content: "회원님의 글에 좋아요가 달렸습니다.", time: "2시간 전" },
+    { id: 3, content: "새로운 팔로워가 생겼습니다.", time: "3시간 전" },
+  ]);
   const { isLoggedIn, userName: contextUserName } = useAuth();
   const navigate = useNavigate();
 
@@ -49,6 +65,7 @@ const UserHeader = () => {
 
   const handleProfileClick = () => {
     setIsDropdownOpen(!isDropdownOpen);
+    setIsAlarmOpen(false);
   };
 
   const handleNavigation = (path) => {
@@ -78,15 +95,37 @@ const UserHeader = () => {
     }
   };
 
+  const handleAlarmClick = (e) => {
+    e.stopPropagation();
+    setIsAlarmOpen(!isAlarmOpen);
+    setIsDropdownOpen(false);
+  };
+
+  const handleNotificationDelete = (id) => {
+    setNotifications(notifications.filter(notif => notif.id !== id));
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isAlarmOpen && !event.target.closest('.alarm-dropdown')) {
+        setIsAlarmOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, [isAlarmOpen]);
+
   return (
     <HeaderContainer>
       <Logo src={logo} alt="Logo" onClick={handleLogoClick} />
       <SearchBar placeholder="검색어를 입력하세요" />
-      <WriteButton onClick={handleWriteClick}>글 작성</WriteButton>
+      <WriteButton onClick={handleWriteClick}><b>글 작성</b></WriteButton>
       
       {isLoggedIn ? (
         <>
-          <UserProfile onClick={handleProfileClick}>
+          
+        <UserProfile onClick={handleProfileClick}>
             <img src={userImage} alt="User Profile" />
             <span>{userName || contextUserName}</span>
             {isDropdownOpen && (
@@ -100,15 +139,44 @@ const UserHeader = () => {
               </DropdownMenu>
             )}
           </UserProfile>
-          <AlarmButton>
+          <AlarmButton onClick={handleAlarmClick}>
             <img src={alarmIcon} alt="Alarm" />
+            {isAlarmOpen && (
+              <AlarmDropdown className="alarm-dropdown">
+                <AlarmHeader>
+                  <span>최근에 온 알림</span>
+                  <CloseButton onClick={() => setIsAlarmOpen(false)}>
+                    닫기
+                  </CloseButton>
+                </AlarmHeader>
+                <AlarmList>
+                  {notifications.length > 0 ? (
+                    notifications.map((notif) => (
+                      <AlarmItem key={notif.id}>
+                        <AlarmContent>
+                          <div>{notif.content}</div>
+                          <AlarmTime>{notif.time}</AlarmTime>
+                        </AlarmContent>
+                        <DeleteButton onClick={() => handleNotificationDelete(notif.id)}>
+                          <img src={closeIcon} alt="Delete" />
+                        </DeleteButton>
+                      </AlarmItem>
+                    ))
+                  ) : (
+                    <NoAlarms>알림이 없습니다.</NoAlarms>
+                  )}
+                </AlarmList>
+              </AlarmDropdown>
+            )}
           </AlarmButton>
         </>
       ) : (
+        <>
         <LoginButton onClick={() => navigate("/login")}>
           <LoginIcon src={loginLogo} alt="Login" />
           <span>로그인 하기</span>
         </LoginButton>
+        </>
       )}
     </HeaderContainer>
   );
