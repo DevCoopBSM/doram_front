@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PageContainer, WriteContainer, EditorSection, PreviewSection, MarkdownEditor, PreviewContent, PreviewTitle, TitleInput, ButtonContainer, LeftButton, FeedbackButton, TempSaveButton, PublishButton, KeywordContainer, KeywordTag, RemoveButton, AddKeywordButton, KeywordInput, ToolbarContainer, ToolbarButton } from './style';
 import { saveBook } from '../../api/bookApi';
+import * as N from '../../styles/NotificationStyle';
 
 const WritePage = () => {
   const navigate = useNavigate();
@@ -12,6 +13,50 @@ const WritePage = () => {
   const [newKeyword, setNewKeyword] = useState('');
   const MAX_KEYWORDS = 10;
   const MAX_KEYWORD_LENGTH = 15;
+  const [notifications, setNotifications] = useState([]);
+
+  const addNotification = (message, isSuccess) => {
+    const id = Date.now();
+    const newNotification = { 
+      id, 
+      message, 
+      isSuccess, 
+      isExiting: false,
+      isMovingUp: false,
+      height: 0
+    };
+    
+    setNotifications(prev => [...prev, newNotification]);
+
+    setTimeout(() => {
+      setNotifications(prev => {
+        const index = prev.findIndex(n => n.id === id);
+        if (index === -1) return prev;
+
+        const height = 95;
+        
+        return prev.map((notification, i) => {
+          if (i === index) {
+            return { ...notification, isExiting: true };
+          }
+          if (i > index) {
+            return { 
+              ...notification, 
+              isMovingUp: true,
+              moveDistance: height 
+            };
+          }
+          return notification;
+        });
+      });
+
+      setTimeout(() => {
+        setNotifications(prev => 
+          prev.filter(notification => notification.id !== id)
+        );
+      }, 300);
+    }, 3000);
+  };
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
@@ -28,13 +73,13 @@ const WritePage = () => {
   };
 
   const handleFeedback = () => {
-    alert('피드백 버튼을 눌렀습니다.');
+    addNotification('피드백 기능은 준비 중입니다.', false);
   };
 
   const handleTempSave = async () => {
     try {
       if (!title.trim()) {
-        alert('제목을 입력해주세요.');
+        addNotification('제목을 입력해주세요.', false);
         return;
       }
 
@@ -42,9 +87,9 @@ const WritePage = () => {
       localStorage.setItem('writeKeywords', JSON.stringify(keywords));
       localStorage.setItem('writeContent', bookContent);
 
-      alert('임시저장이 완료되었습니다.');
+      addNotification('임시저장이 완료되었습니다.', true);
     } catch (error) {
-      alert('임시 저장 중 오류가 발생했습니다.');
+      addNotification('임시 저장 중 오류가 발생했습니다.', false);
       console.error('임시 저장 오류:', error);
     }
   };
@@ -52,11 +97,11 @@ const WritePage = () => {
   const handlePublish = async () => {
     try {
       if (!title.trim()) {
-        alert('제목을 입력해주세요.');
+        addNotification('제목을 입력해주세요.', false);
         return;
       }
       if (!bookContent.trim()) {
-        alert('내용을 입력해주세요.');
+        addNotification('내용을 입력해주세요.', false);
         return;
       }
 
@@ -64,16 +109,17 @@ const WritePage = () => {
       localStorage.setItem('writeKeywords', JSON.stringify(keywords));
       localStorage.setItem('writeContent', bookContent);
 
-      navigate('/detail');
+      addNotification('출간 페이지로 이동합니다.', true);
+      setTimeout(() => navigate('/detail'), 1000);
     } catch (error) {
-      alert('오류가 발생했습니다.');
+      addNotification('오류가 발생했습니다.', false);
       console.error('오류:', error);
     }
   };
 
   const handleAddKeywordClick = () => {
     if (keywords.length >= MAX_KEYWORDS) {
-      alert('키워드는 최대 10개까지만 추가할 수 있습니다.');
+      addNotification('키워드는 최대 10개까지만 추가할 수 있습니다.', false);
       return;
     }
     setIsAddingKeyword(true);
@@ -89,7 +135,7 @@ const WritePage = () => {
   const handleKeywordInputKeyPress = (e) => {
     if (e.key === 'Enter' && newKeyword.trim()) {
       if (keywords.length >= MAX_KEYWORDS) {
-        alert('키워드는 최대 10개까지만 추가할 수 있습니다.');
+        addNotification('키워드는 최대 10개까지만 추가할 수 있습니다.', false);
         return;
       }
       setKeywords([...keywords, newKeyword.trim()]);
@@ -216,6 +262,19 @@ const WritePage = () => {
           <PreviewContent dangerouslySetInnerHTML={{ __html: parseMarkdown(bookContent) }} />
         </PreviewSection>
       </WriteContainer>
+      <N.NotificationContainer>
+        {notifications.map(({ id, message, isSuccess, isExiting, isMovingUp, moveDistance }) => (
+          <N.NotificationItem 
+            key={id} 
+            isExiting={isExiting}
+            isMovingUp={isMovingUp}
+            moveDistance={moveDistance}
+          >
+            <N.NotificationBar isSuccess={isSuccess} />
+            <N.NotificationContent>{message}</N.NotificationContent>
+          </N.NotificationItem>
+        ))}
+      </N.NotificationContainer>
     </PageContainer>
   );
 };

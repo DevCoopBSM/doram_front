@@ -17,6 +17,7 @@ export const ContentContainer = styled.div`
 `;
 
 export const Contain = styled.div`
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -54,10 +55,10 @@ export const Input = styled.input`
 `;
 
 export const LoginSection = styled.div`
+  margin: 30px;
   display: flex;
   flex-direction: row;
   gap: 12px;
-  margin-top: 20px;
 `;
 
 export const Text2 = styled.div`
@@ -82,7 +83,7 @@ export const AccountBtn = styled.button`
   background-color: #8ee559;
   color: #ffffff;
   font-size: 32px;
-  font-weight: "400";
+  font-weight: 900;
   word-wrap: "break-word";
 `;
 
@@ -102,3 +103,4 @@ export const PopupText = styled.p`
   font-size: 18px;
   text-align: center;
 `;
+

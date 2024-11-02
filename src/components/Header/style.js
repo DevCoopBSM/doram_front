@@ -6,6 +6,7 @@ export const HeaderContainer = styled.header`
   justify-content: space-between;
   width: 100%;
   padding: 10px 20px;
+  margin-bottom: 10px;
 `;
 
 export const Logo = styled.img`
@@ -107,4 +108,23 @@ export const AlarmButton = styled.button`
     width: 24px;
     height: 24px;
   }
+`;
+
+export const LoginButton = styled.div`
+  display: flex;
+  align-items: center;d
+  gap: 8px;
+  cursor: pointer;
+  
+  
+  span {
+    font-size: 16px;
+    color: #000;
+  }
+`;
+
+export const LoginIcon = styled.img`
+  width: 16px;
+  height: 18px;
+  margin-right: 10px;
 `;

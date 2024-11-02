@@ -123,36 +123,78 @@ export const Num = styled.div`
   font-weight: 800;
 `;
 
-export const WriteSection = styled.div`
-  margin-top: 50px;
-`;
 export const Category = styled.div`
-  position: absolute;
-  display: flex;
-  gap: 45px;
-`;
-export const WriteCategory = styled.button`
   position: relative;
-  width: 341px;
-  height: 46px;
-  background-color: ${(props) => (props.isActive ? "#8ee559" : "transparent")};
-  color: ${(props) => (props.isActive ? "#fff" : "#000")};
+  display: flex;
+  width: 100%;
+  border-bottom: 1px solid #EEEEEE;
+  background: #F8F8F8;
   border-radius: 8px 8px 0 0;
+`;
+
+export const CategoryButton = styled.button`
+  position: relative;
+  flex: 1;
+  height: 56px;
+  background-color: transparent;
+  color: ${props => props.isActive ? '#fff' : '#666666'};
   cursor: pointer;
   border: none;
   font-family: "NanumSquareNeoBold";
+  font-size: 20px;
   font-weight: 700;
+  transition: color 0.3s ease;
+  z-index: 1;
 `;
 
-export const LikeCategory = styled(WriteCategory)``;
-export const SaveCategory = styled(WriteCategory)``;
+export const CategoryIndicator = styled.div`
+  position: absolute;
+  height: 100%;
+  width: 33.33%;
+  background: #8EE559;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+  transform: translateX(${props => {
+    switch(props.activeCategory) {
+      case 'write': return '0%';
+      case 'like': return '100%';
+      case 'save': return '200%';
+      default: return '0%';
+    }
+  }});
+`;
+
+export const WriteCategory = styled(CategoryButton)``;
+export const LikeCategory = styled(CategoryButton)``;
+export const SaveCategory = styled(CategoryButton)``;
+
+export const WriteSection = styled.div`
+  margin-top: 50px;
+`;
 
 export const ListSection = styled.div`
-  margin-top: 130px;
+  margin-top: 0;  // 간격 조정
+  padding-top: 32px;
   display: flex;
   flex-direction: column;
   gap: 8px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s ease forwards;
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 `;
+
 export const List = styled.div`
   width: 100%;
   height: 80px;

@@ -12,6 +12,7 @@ const UserInfo = () => {
   const [userProfile, setUserProfile] = useState(null);
   const [userBooks, setUserBooks] = useState([]);
   const navigate = useNavigate();
+  const [animationKey, setAnimationKey] = useState(0);
 
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -30,6 +31,7 @@ const UserInfo = () => {
 
   const handleCategoryClick = (category) => {
     setActiveCategory(category);
+    setAnimationKey(prev => prev + 1);
   };
 
   const goToModify = () => {
@@ -70,6 +72,7 @@ const UserInfo = () => {
 
         <S.WriteSection>
           <S.Category>
+            <S.CategoryIndicator activeCategory={activeCategory} />
             <S.WriteCategory
               isActive={activeCategory === "write"}
               onClick={() => handleCategoryClick("write")}
@@ -91,7 +94,7 @@ const UserInfo = () => {
           </S.Category>
         </S.WriteSection>
 
-        <S.ListSection>
+        <S.ListSection key={animationKey}>
           {userBooks.map((book) => (
             <S.List key={book.bookId}>
               <S.BookName>{book.bookTitle}</S.BookName>

@@ -9,10 +9,13 @@ import {
   DropdownMenu,
   DropdownItem,
   AlarmButton,
+  LoginButton,
+  LoginIcon,
 } from "./style";
 import logo from "../../assets/logo.png";
 import userImage from "../../assets/userImage.svg";
 import alarmIcon from "../../assets/alarm.svg";
+import loginLogo from "../../assets/loginLogo.svg";
 import { useAuth } from "../../context/AuthContext";
 
 const UserHeader = () => {
@@ -102,9 +105,10 @@ const UserHeader = () => {
           </AlarmButton>
         </>
       ) : (
-        <div onClick={() => navigate("/login")} style={{ cursor: 'pointer' }}>
-          로그인
-        </div>
+        <LoginButton onClick={() => navigate("/login")}>
+          <LoginIcon src={loginLogo} alt="Login" />
+          <span>로그인 하기</span>
+        </LoginButton>
       )}
     </HeaderContainer>
   );
