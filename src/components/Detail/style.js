@@ -1,89 +1,162 @@
 import styled from "styled-components";
 
+const breakpoints = {
+  mobile: '480px',
+  tablet: '768px',
+  laptop: '1024px',
+  desktop: '1200px'
+};
+
 export const LayoutContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 1152px;
+  width: 100%;
+  max-width: 1152px;
   padding: 20px;
   margin: 0 auto;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    padding: 15px;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    padding: 10px;
+  }
 `;
 
 export const ContentContainer = styled.div`
   width: 100%;
   margin-top: 50px;
   box-sizing: border-box;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    margin-top: 30px;
+  }
 `;
 
 export const Contain = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 465px;
-`;
+  justify-content: space-between;
+  gap: 20px;
 
-export const SelectSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-top: 20px;
+  @media (max-width: ${breakpoints.tablet}) {
+    flex-direction: column;
+    gap: 15px;
+  }
 `;
 
 export const Title = styled.div`
-  color: "black";
+  color: black;
   font-size: 32px;
   margin-left: 20px;
   white-space: nowrap;
   font-family: "NanumSquareNeoExtraBold";
   font-weight: 800;
-`;
 
-export const DetailSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-`;
-export const Font = styled.div`
-  font-family: "NanumSquareNeoExtraBold";
-  font-weight: 800;
-`;
-export const Detail = styled.div`
-  color: "black";
-  font-size: 24px;
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 24px;
+    margin-left: 10px;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 20px;
+  }
 `;
 
 export const BtnContainer = styled.div`
+  position: relative;
   display: flex;
-  flex-direction: row;
-  gap: 16px;
-  padding-top: 16px;
+  width: 424px;
+  height: 42px;
+  background: #F8F8F8;
+  border-radius: 8px;
+  overflow: hidden;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 320px;
+    height: 36px;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    width: 240px;
+    height: 32px;
+  }
 `;
 
 export const Btn = styled.button`
-  width: 212px;
-  height: 42px;
-  background-color: white;
-  color: black;
-  border: 3px solid #8ee559;
+  flex: 1;
+  height: 100%;
+  background-color: transparent;
+  color: #666666;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: "NanumSquareNeoBold";
+  transition: color 0.3s ease;
+  z-index: 1;
+  position: relative;
+  padding: 0;
+
+  &.active {
+    color: white;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 14px;
+  }
+`;
+
+export const StatusIndicator = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 50%;
+  background: #8EE559;
   border-radius: 8px;
+  transition: transform 0.3s ease;
+  transform: translateX(${props => props.isPublic ? '0%' : '100%'});
 `;
 
 export const ImgSection = styled.div`
   display: flex;
   flex-direction: row;
   gap: 70px;
+  margin: 30px 0;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    gap: 30px;
+    justify-content: center;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
 `;
 
 export const Img = styled.div`
   position: relative;
-  bottom: 42px;
-  left: 20px;
   width: 200px;
   height: 280px;
   background-color: #d9d9d9;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 160px;
+    height: 224px;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    width: 140px;
+    height: 196px;
+  }
 `;
 
 export const UploadBtn = styled.button`
-  position: relative;
-  top: 192px;
   width: 200px;
   height: 46px;
   padding: 10px 24px;
@@ -94,56 +167,19 @@ export const UploadBtn = styled.button`
   cursor: pointer;
   border: none;
   white-space: nowrap;
-`;
 
-export const DescriptionSection = styled.div`
-  position: absolute;
-  bottom: 60px;
-  margin-left: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-`;
-
-export const DescriptionBox = styled.textarea`
-  width: 80vh;
-  height: 170px;
-  padding: 15px;
-  margin-bottom: 100px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  resize: none;
-  font-size: 18px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 
-    'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 
-    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-  
-  &:focus {
-    outline: none;
-    border-color: #AEAEAE;
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 160px;
+    height: 40px;
+    font-size: 14px;
   }
-  
-  &::placeholder {
-    font-family: inherit;
-  }
-`;
 
-export const SaveBtn = styled.button`
-  position: absolute;
-  bottom: 450px;
-  left: 72%;
-  margin-top: 75px;
-  width: 120px;
-  height: 55px;
-  border-radius: 8px;
-  background: var(--Primary, #8ee559);
-  color: #fff;
-  font-size: 24px;
-  cursor: pointer;
-  border: none;
-  white-space: nowrap;
-  font-family: "NanumSquareNeoExtraBold";
-  font-weight: 800;
+  @media (max-width: ${breakpoints.mobile}) {
+    width: 140px;
+    height: 36px;
+    font-size: 12px;
+    padding: 8px 16px;
+  }
 `;
 
 export const PreviewContainer = styled.div`
@@ -153,6 +189,16 @@ export const PreviewContainer = styled.div`
   border-radius: 12px;
   margin: 40px 0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: ${breakpoints.tablet}) {
+    padding: 20px;
+    margin: 30px 0;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    padding: 15px;
+    margin: 20px 0;
+  }
 `;
 
 export const PreviewTitle = styled.h2`
@@ -162,6 +208,17 @@ export const PreviewTitle = styled.h2`
   color: #333;
   border-bottom: 2px solid #e0e0e0;
   padding-bottom: 16px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 20px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+  }
 `;
 
 export const PreviewContent = styled.div`
@@ -173,33 +230,108 @@ export const PreviewContent = styled.div`
   overflow-y: auto;
   padding: 10px;
 
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 14px;
+    max-height: 400px;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 12px;
+    max-height: 300px;
+    padding: 5px;
+  }
+
   h1 {
     font-size: 24px;
-    font-weight: bold;
     margin: 24px 0 16px;
-    color: #2c3e50;
-  }
 
-  h2 {
+    @media (max-width: ${breakpoints.tablet}) {
+      font-size: 20px;
+      margin: 20px 0 14px;
+    }
+
+    @media (max-width: ${breakpoints.mobile}) {
+      font-size: 18px;
+      margin: 16px 0 12px;
+    }
+  }
+`;
+
+export const SaveBtn = styled.button`
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 120px;
+  height: 55px;
+  border-radius: 8px;
+  background: var(--Primary, #8ee559);
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  border: none;
+  white-space: nowrap;
+  font-family: "NanumSquareNeoExtraBold";
+  font-weight: 800;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 100px;
+    height: 45px;
     font-size: 20px;
-    font-weight: bold;
-    margin: 20px 0 14px;
-    color: #34495e;
   }
 
-  code {
-    background-color: #f0f0f0;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-family: 'Courier New', monospace;
+  @media (max-width: ${breakpoints.mobile}) {
+    width: 80px;
+    height: 40px;
+    font-size: 16px;
+    bottom: 15px;
+    right: 15px;
+  }
+`;
+
+export const SelectSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    gap: 15px;
   }
 
-  ul, ol {
-    margin-left: 20px;
-    margin-bottom: 16px;
+  @media (max-width: ${breakpoints.mobile}) {
+    gap: 10px;
+  }
+`;
+
+export const DetailSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    gap: 12px;
+  }
+`;
+
+export const Detail = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    gap: 6px;
+  }
+`;
+
+export const Font = styled.div`
+  color: black;
+  font-size: 20px;
+  font-weight: 600;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 18px;
   }
 
-  li {
-    margin-bottom: 8px;
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 16px;
   }
 `;

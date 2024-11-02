@@ -93,21 +93,16 @@ const Detail = () => {
                 공개 설정
                 </S.Font>
                 <S.BtnContainer>
+                  <S.StatusIndicator isPublic={publicStatus} />
                   <S.Btn
                     onClick={() => setPublicStatus(true)}
-                    style={{
-                      backgroundColor: publicStatus ? "#8ee559" : "white",
-                      color: publicStatus ? "white" : "black",
-                    }}
+                    className={publicStatus ? 'active' : ''}
                   >
                     전체 공개
                   </S.Btn>
                   <S.Btn
                     onClick={() => setPublicStatus(false)}
-                    style={{
-                      backgroundColor: !publicStatus ? "#8ee559" : "white",
-                      color: !publicStatus ? "white" : "black",
-                    }}
+                    className={!publicStatus ? 'active' : ''}
                   >
                     비공개
                   </S.Btn>
