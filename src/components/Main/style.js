@@ -1,9 +1,26 @@
 import styled from "styled-components";
 
+// 먼저 breakpoint 상수 추가
+const breakpoints = {
+  mobile: '480px',
+  tablet: '768px',
+  laptop: '1024px',
+  desktop: '1200px'
+};
+
 export const MainContainer = styled.main`
-  width: 1152px;
+  width: 100%;
+  max-width: 1152px;
   padding: 20px;
   margin: 0 auto;
+  
+  @media (max-width: ${breakpoints.laptop}) {
+    padding: 15px;
+  }
+  
+  @media (max-width: ${breakpoints.mobile}) {
+    padding: 10px;
+  }
 `;
 
 export const Banner = styled.div`
@@ -16,6 +33,14 @@ export const Banner = styled.div`
   background-color: #8ee559;
   margin-bottom: 20px;
   text-align: center;
+  
+  @media (max-width: ${breakpoints.tablet}) {
+    height: 150px;
+  }
+  
+  @media (max-width: ${breakpoints.mobile}) {
+    height: 120px;
+  }
 `;
 
 export const BannerText = styled.div`
@@ -23,12 +48,28 @@ export const BannerText = styled.div`
   font-family: "NanumSquareNeo";
   color: black;
   font-size: 24px;
+  
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 20px;
+  }
+  
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 16px;
+  }
 `;
 
 export const BannerText2 = styled.div`
   font-weight: 400;
   font-size: 36px;
   font-family: "Jalnan";
+  
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 28px;
+  }
+  
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 24px;
+  }
 `;
 
 export const SectionTitle = styled.h2`
@@ -46,6 +87,15 @@ export const CategorySection = styled.div`
   width: 100%;
   border-bottom: 1px solid #EEEEEE;
   padding-bottom: 12px;
+  
+  @media (max-width: ${breakpoints.tablet}) {
+    gap: 20px;
+  }
+  
+  @media (max-width: ${breakpoints.mobile}) {
+    gap: 15px;
+    justify-content: center;
+  }
 `;
 
 export const CategoryButton = styled.div`
@@ -57,6 +107,10 @@ export const CategoryButton = styled.div`
   padding-bottom: 12px;
   transition: color 0.3s ease;
   
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 14px;
+  }
+
   &::after {
     content: '';
     position: absolute;
@@ -86,18 +140,46 @@ export const BookSection = styled.div`
   margin-top: 20px;
   width: 100%;
   justify-content: flex-start;
+  
+  @media (max-width: ${breakpoints.desktop}) {
+    gap: 20px;
+  }
+  
+  @media (max-width: ${breakpoints.laptop}) {
+    gap: 16px;
+  }
+  
+  @media (max-width: ${breakpoints.tablet}) {
+    gap: 12px;
+  }
 `;
 
 export const BookCard = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: calc((100% - 96px) / 5);
+  width: calc((100% - 96px) / 5);  // 기본 데스크톱: 5개
   cursor: pointer;
   opacity: 0;
   transform: translateY(-20px);
   animation: fadeInDown 0.5s ease forwards;
   animation-delay: ${props => props.index * 0.05}s;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    width: calc((100% - 60px) / 4);  // 1200px 이하: 4개
+  }
+  
+  @media (max-width: ${breakpoints.laptop}) {
+    width: calc((100% - 32px) / 3);  // 1024px 이하: 3개
+  }
+  
+  @media (max-width: ${breakpoints.tablet}) {
+    width: calc((100% - 12px) / 2);  // 768px 이하: 2개
+  }
+  
+  @media (max-width: ${breakpoints.mobile}) {
+    width: 100%;  // 480px 이하: 1개
+  }
 
   @keyframes fadeInDown {
     from {

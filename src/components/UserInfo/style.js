@@ -1,12 +1,28 @@
 import styled from "styled-components";
 
+const breakpoints = {
+  mobile: '480px',
+  tablet: '768px',
+  laptop: '1024px',
+  desktop: '1200px'
+};
+
 export const LayoutContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 1152px;
+  width: 100%;
+  max-width: 1152px;
   padding: 20px;
   margin: 0 auto;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    padding: 15px;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    padding: 10px;
+  }
 `;
 
 export const ContentContainer = styled.div`
@@ -35,6 +51,13 @@ export const UserSection = styled.div`
   align-items: flex-start;
   width: 100%;
   margin-top: 70px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    text-align: center;
+  }
 `;
 
 export const UserLogo = styled.img`
@@ -42,6 +65,18 @@ export const UserLogo = styled.img`
   height: 150px;
   border-radius: 50%;
   margin-right: 20px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 120px;
+    height: 120px;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    width: 100px;
+    height: 100px;
+  }
 `;
 
 export const UserDetails = styled.div`
@@ -49,6 +84,10 @@ export const UserDetails = styled.div`
   flex-direction: column;
   justify-content: center;
   width: 100%;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    align-items: center;
+  }
 `;
 
 export const UserName = styled.h2`
@@ -58,18 +97,39 @@ export const UserName = styled.h2`
   margin: 0;
   margin-bottom: 8px;
   gap: 15px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    flex-direction: column;
+    gap: 10px;
+  }
 `;
 
 export const Name = styled.div`
   font-size: 36px;
   font-family: "NanumSquareNeoExtraBold";
   font-weight: 800;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 30px;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 24px;
+  }
 `;
 
 export const UserEmail = styled.div`
   font-size: 24px;
   color: #666;
   font-family: "NanumSquareNeo";
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 20px;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 16px;
+  }
 `;
 
 export const UserBio = styled.p`
@@ -89,6 +149,13 @@ export const EditButton = styled.button`
   cursor: pointer;
   border: none;
   white-space: nowrap;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    width: 100px;
+    height: 40px;
+    padding: 8px 16px;
+    font-size: 14px;
+  }
 `;
 
 export const FollowerFollowingSection = styled.div`
@@ -130,6 +197,10 @@ export const Category = styled.div`
   border-bottom: 1px solid #EEEEEE;
   background: #F8F8F8;
   border-radius: 8px 8px 0 0;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 14px;
+  }
 `;
 
 export const CategoryButton = styled.button`
@@ -145,6 +216,16 @@ export const CategoryButton = styled.button`
   font-weight: 700;
   transition: color 0.3s ease;
   z-index: 1;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    height: 48px;
+    font-size: 16px;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    height: 40px;
+    font-size: 14px;
+  }
 `;
 
 export const CategoryIndicator = styled.div`
@@ -202,17 +283,46 @@ export const List = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  padding: 0 15px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    height: 70px;
+    padding: 0 10px;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    height: 60px;
+    padding: 0 8px;
+  }
 `;
 
 export const BookName = styled.div`
   font-size: 24px;
   color: black;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 20px;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 16px;
+  }
 `;
 export const Reaction = styled.div`
   display: flex;
   gap: 20px;
-  font-size: 18;
+  font-size: 18px;
   color: #cccccc;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    gap: 15px;
+    font-size: 16px;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    gap: 10px;
+    font-size: 14px;
+  }
 `;
 
 export const Like = styled.div``;

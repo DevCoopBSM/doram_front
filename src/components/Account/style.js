@@ -1,12 +1,28 @@
 import styled from "styled-components";
 
+const breakpoints = {
+  mobile: '480px',
+  tablet: '768px',
+  laptop: '1024px',
+  desktop: '1200px'
+};
+
 export const LayoutContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 1152px;
+  width: 100%;
+  max-width: 1152px;
   padding: 20px;
   margin: 0 auto;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    padding: 15px;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    padding: 10px;
+  }
 `;
 
 export const ContentContainer = styled.div`
@@ -21,37 +37,92 @@ export const Contain = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  max-width: 700px;
+  padding: 0 20px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    margin-top: 30px;
+    padding: 0 15px;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    margin-top: 20px;
+    padding: 0 10px;
+  }
 `;
 
 export const Logo = styled.img`
   margin-top: 40px;
   width: 263px;
   height: 85px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 210px;
+    height: 68px;
+    margin-top: 30px;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    width: 180px;
+    height: 58px;
+    margin-top: 20px;
+  }
 `;
 
 export const Text = styled.div`
-  color: "black";
+  color: black;
   font-size: 24px;
   font-weight: 400;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  white-space: nowrap;
+  margin: 30px 0;
+  text-align: center;
+  white-space: normal;
+  word-break: keep-all;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 20px;
+    margin: 25px 0;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 16px;
+    margin: 20px 0;
+  }
 `;
 
 export const InputSection = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
+  width: 100%;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    gap: 8px;
+  }
 `;
 
 export const Input = styled.input`
-  width: 700px;
+  width: 100%;
+  height: 60px;
   color: black;
   font-size: 24px;
   font-weight: 400;
   background-color: #f2f2f2;
-  white-space: nowrap;
   padding-left: 24px;
+  border: none;
+  border-radius: 8px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    height: 50px;
+    font-size: 20px;
+    padding-left: 20px;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    height: 45px;
+    font-size: 16px;
+    padding-left: 16px;
+  }
 `;
 
 export const LoginSection = styled.div`
@@ -59,32 +130,76 @@ export const LoginSection = styled.div`
   display: flex;
   flex-direction: row;
   gap: 12px;
+  align-items: center;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    margin: 25px;
+    gap: 10px;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    margin: 20px;
+    gap: 8px;
+  }
 `;
 
 export const Text2 = styled.div`
   color: #41434c;
   font-size: 24px;
-  font-weight: "400";
-  word-wrap: "break-word";
+  font-weight: 400;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 20px;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 14px;
+  }
 `;
 
 export const Login = styled.div`
   color: #0085ff;
   font-size: 24px;
-  font-weight: "400";
-  word-wrap: "break-word";
+  font-weight: 400;
   cursor: pointer;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 20px;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 14px;
+  }
 `;
 
 export const AccountBtn = styled.button`
   margin-top: 20px;
-  width: 700px;
+  width: 100%;
   height: 77px;
   background-color: #8ee559;
   color: #ffffff;
   font-size: 32px;
   font-weight: 900;
-  word-wrap: "break-word";
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #7ed649;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    height: 60px;
+    font-size: 24px;
+    margin-top: 15px;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    height: 50px;
+    font-size: 20px;
+    margin-top: 10px;
+  }
 `;
 
 export const PopupContainer = styled.div`
@@ -96,11 +211,24 @@ export const PopupContainer = styled.div`
   padding: 20px;
   border-radius: 10px;
   z-index: 1000;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    width: 80%;
+    padding: 15px;
+  }
 `;
 
 export const PopupText = styled.p`
   color: #fff;
   font-size: 18px;
   text-align: center;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 16px;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 14px;
+  }
 `;
 
